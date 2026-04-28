@@ -1,6 +1,6 @@
 # JB Blog - Julien Bechkri's Professional Platform
 
-Plateforme de présentation et blog de Julien Bechkri - Product Manager, Agiliste, Expert Digital.
+Plateforme de présentation et blog de Julien Bechkri - Digital Transformation & Organisation, Head of Product Management, Direction de projet IT.
 
 ## 🚀 Quick Start
 
@@ -47,3 +47,15 @@ src/
 ## 🌐 Déploiement
 
 Prêt pour Netlify, Vercel, ou tout serveur statique.
+Repository: https://github.com/LaBeck53/jb-blog
+
+## 📞 Contact
+
+- **Email**: julien.bechkri@digilityx.com
+- **LinkedIn**: https://www.linkedin.com/in/jbechkri/
+- **Site**: À déployer prochainement
+
+---
+
+**Dernière mise à jour**: 28 avril 2026
+**Maintenu par**: Julien Bechkri
