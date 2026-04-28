@@ -1,0 +1,46 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  tags?: string[];
+  link?: string;
+  external?: boolean;
+}
+
+const { title, description, tags = [], link, external = true } = Astro.props;
+---
+
+<article class="group p-6 rounded-lg bg-white border-2 border-gray-200 hover:border-primary-500 hover:shadow-xl transition-all">
+  <div class="flex flex-col gap-4 h-full">
+    <!-- Title -->
+    {link ? (
+      <a 
+        href={link}
+        target={external ? "_blank" : "_self"}
+        rel={external ? "noopener noreferrer" : ""}
+        class="text-2xl font-bold text-gray-900 group-hover:text-primary-600 transition-colors"
+      >
+        {title}
+        {external && <span class="text-lg">↗</span>}
+      </a>
+    ) : (
+      <h3 class="text-2xl font-bold text-gray-900">{title}</h3>
+    )}
+
+    <!-- Description -->
+    <p class="text-gray-600 flex-grow">
+      {description}
+    </p>
+
+    <!-- Tags -->
+    {tags.length > 0 && (
+      <div class="flex flex-wrap gap-2 pt-4 border-t border-gray-200">
+        {tags.map(tag => (
+          <span class="inline-block bg-primary-100 text-primary-700 text-sm px-3 py-1 rounded-full font-medium">
+            {tag}
+          </span>
+        ))}
+      </div>
+    )}
+  </div>
+</article>

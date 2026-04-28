@@ -1,0 +1,42 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  date: string;
+  author?: string;
+  readingTime?: string;
+}
+
+const { title, description, date, author = "Julien Bechkri", readingTime } = Astro.props;
+---
+
+<BaseLayout title={title} description={description}>
+  <article class="max-w-3xl mx-auto px-4 py-16">
+    <!-- Article Header -->
+    <div class="mb-8 pb-8 border-b border-gray-200">
+      <h1 class="text-5xl font-bold mb-4">{title}</h1>
+      <p class="text-xl text-gray-600 mb-4">{description}</p>
+      
+      <div class="flex flex-wrap gap-6 text-sm text-gray-500">
+        <span>{new Date(date).toLocaleDateString('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+        <span>Par {author}</span>
+        {readingTime && <span>{readingTime} min de lecture</span>}
+      </div>
+    </div>
+
+    <!-- Article Content -->
+    <div class="prose prose-lg max-w-none mb-16">
+      <slot />
+    </div>
+
+    <!-- Back Link -->
+    <div class="pt-8 border-t border-gray-200">
+      <a href="/blog" class="inline-flex items-center gap-2 text-primary-600 hover:text-primary-700">
+        <span>←</span>
+        <span>Retour au blog</span>
+      </a>
+    </div>
+  </article>
+</BaseLayout>

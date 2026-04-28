@@ -1,0 +1,112 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import ArticleCard from '../components/ArticleCard.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+---
+
+<BaseLayout title="Julien Bechkri - Product Manager & Agiliste">
+  <!-- Hero Section -->
+  <Hero 
+    title="Julien Bechkri"
+    subtitle="Product Manager • Transformateur Digital • Agiliste"
+    cta={{ text: "Découvrir mon travail", href: "#featured" }}
+  />
+
+  <!-- Featured Section -->
+  <section id="featured" class="max-w-6xl mx-auto px-4 py-20">
+    <!-- About Short -->
+    <div class="mb-20">
+      <h2 class="text-3xl font-bold mb-6">À Propos</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+        <div class="md:col-span-2">
+          <p class="text-lg text-gray-600 mb-4">
+            J'aide les organisations à transformer leur approche produit et à mettre en place une véritable culture agile. Fort de plusieurs années d'expérience en gestion de produit digital, je travaille à l'intersection entre stratégie, technologie et humain.
+          </p>
+          <p class="text-lg text-gray-600 mb-6">
+            Sur cette plateforme, vous trouverez mes réflexions sur : la gestion de produit, l'agilité, la transformation digitale, et les meilleures pratiques en management.
+          </p>
+          <a href="/about" class="inline-flex items-center gap-2 bg-primary-600 hover:bg-primary-700 text-white font-bold py-2 px-6 rounded-lg transition-colors">
+            Lire mon parcours complet →
+          </a>
+        </div>
+        <div class="bg-gray-200 rounded-lg h-64 flex items-center justify-center">
+          <p class="text-gray-500">Photo professionnel (à ajouter)</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Featured Articles -->
+    <div class="mb-20">
+      <div class="flex items-center justify-between mb-8">
+        <h2 class="text-3xl font-bold">Articles Récents</h2>
+        <a href="/blog" class="text-primary-600 hover:text-primary-700 font-semibold">
+          Voir tous les articles →
+        </a>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <ArticleCard
+          title="Les 5 principes clés de la gestion agile"
+          description="Découvrez les fondamentaux de l'agilité et comment les appliquer dans votre contexte d'entreprise."
+          date="2026-04-15"
+          tags={["Agilité", "Management"]}
+          external={true}
+          url="https://blog-entreprise.com/article-1"
+        />
+        <ArticleCard
+          title="Product Management : Vision vs Exécution"
+          description="Comment trouver l'équilibre entre une vision ambitieuse et une exécution pragmatique."
+          date="2026-04-10"
+          tags={["Product", "Stratégie"]}
+          external={true}
+          url="https://blog-entreprise.com/article-2"
+        />
+        <ArticleCard
+          title="Transformation digitale : Au-delà de la technologie"
+          description="La transformation digitale, c'est d'abord une question de culture et de mindset."
+          date="2026-04-05"
+          tags={["Digital", "Transformation"]}
+          external={true}
+          url="https://blog-entreprise.com/article-3"
+        />
+      </div>
+    </div>
+
+    <!-- Featured Projects -->
+    <div>
+      <div class="flex items-center justify-between mb-8">
+        <h2 class="text-3xl font-bold">Projets en Vedette</h2>
+        <a href="/projects" class="text-primary-600 hover:text-primary-700 font-semibold">
+          Voir tous les projets →
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <ProjectCard
+          title="Refonte de l'approche Product"
+          description="Passage d'une organisation en silos à une véritable organisation orientée produit dans une entreprise de 500+ personnes."
+          tags={["Product", "Transformation", "Leadership"]}
+        />
+        <ProjectCard
+          title="Mise en place de la culture Agile"
+          description="Accompagnement des équipes de développement et produit vers une véritable adoption des méthodes agiles."
+          tags={["Agilité", "Coaching", "Formation"]}
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="bg-primary-600 text-white py-16">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">Vous avez un projet en tête ?</h2>
+      <p class="text-xl mb-8 opacity-90">
+        Discutons de comment je peux vous aider à transformer votre approche produit et vos processus agiles.
+      </p>
+      <a href="#contact" class="inline-block bg-white text-primary-600 hover:bg-gray-100 font-bold py-3 px-8 rounded-lg transition-colors">
+        Prenons contact
+      </a>
+    </div>
+  </section>
+</BaseLayout>

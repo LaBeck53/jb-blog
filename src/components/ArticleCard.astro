@@ -1,0 +1,50 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  date: string;
+  slug?: string;
+  tags?: string[];
+  external?: boolean;
+  url?: string;
+}
+
+const { title, description, date, slug, tags = [], external = false, url } = Astro.props;
+const href = url || `/blog/${slug}`;
+---
+
+<article class="group p-6 rounded-lg border border-gray-200 hover:border-primary-300 hover:shadow-lg transition-all">
+  <div class="flex flex-col gap-3">
+    <!-- Date -->
+    <time class="text-sm text-gray-500">
+      {new Date(date).toLocaleDateString('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' })}
+    </time>
+
+    <!-- Title -->
+    <a 
+      href={href}
+      target={external ? "_blank" : "_self"}
+      rel={external ? "noopener noreferrer" : ""}
+      class="text-lg md:text-xl font-bold text-gray-900 group-hover:text-primary-600 transition-colors"
+    >
+      {title}
+      {external && <span class="text-sm">↗</span>}
+    </a>
+
+    <!-- Description -->
+    <p class="text-gray-600 line-clamp-2">
+      {description}
+    </p>
+
+    <!-- Tags -->
+    {tags.length > 0 && (
+      <div class="flex flex-wrap gap-2 pt-2">
+        {tags.map(tag => (
+          <span class="inline-block bg-gray-100 text-gray-700 text-xs px-3 py-1 rounded-full">
+            {tag}
+          </span>
+        ))}
+      </div>
+    )}
+  </div>
+</article>

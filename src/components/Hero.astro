@@ -1,0 +1,32 @@
+---
+interface Props {
+  title?: string;
+  subtitle?: string;
+  cta?: { text: string; href: string };
+}
+
+const { 
+  title = "Bienvenue sur ma plateforme",
+  subtitle = "Product Management • Agilité • Transformation Digitale",
+  cta = { text: "Découvrir", href: "#content" }
+} = Astro.props;
+---
+
+<section class="bg-gradient-to-br from-primary-50 to-white py-20 md:py-32">
+  <div class="max-w-6xl mx-auto px-4 text-center">
+    <h1 class="text-5xl md:text-6xl font-bold mb-6 text-gray-900">
+      {title}
+    </h1>
+    
+    <p class="text-xl md:text-2xl text-gray-600 mb-8 max-w-2xl mx-auto">
+      {subtitle}
+    </p>
+
+    <a 
+      href={cta.href}
+      class="inline-block bg-primary-600 hover:bg-primary-700 text-white font-bold py-3 px-8 rounded-lg transition-colors"
+    >
+      {cta.text} ↓
+    </a>
+  </div>
+</section>

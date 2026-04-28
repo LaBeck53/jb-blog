@@ -1,0 +1,68 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+---
+
+<BaseLayout title="Projets - Julien Bechkri" description="Découvrez les projets et expériences clés que j'ai menés">
+  <div class="max-w-6xl mx-auto px-4 py-16">
+    <!-- Header -->
+    <div class="mb-16">
+      <h1 class="text-5xl font-bold mb-4">Mes Projets</h1>
+      <p class="text-xl text-gray-600">
+        Une sélection de projets et initiatives que j'ai menés ou auxquels j'ai contribué significativement.
+      </p>
+    </div>
+
+    <!-- Projects Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <ProjectCard
+        title="Refonte Approche Product"
+        description="Transformation d'une organisation métier en véritable organisation orientée produit. Mise en place d'une structure produit, création d'une stratégie produit cohérente, et accompagnement des équipes."
+        tags={["Product Strategy", "Transformation", "Leadership"]}
+      />
+
+      <ProjectCard
+        title="Implémentation Agilité"
+        description="Passage de 3 équipes de développement en Waterfall à Scrum. Coaching, formation, et accompagnement du changement. Résultats : +40% de productivité, -30% de time-to-market."
+        tags={["Agile", "Coaching", "Formation"]}
+      />
+
+      <ProjectCard
+        title="Plateforme Digital"
+        description="Conception et lancement d'une plateforme SaaS B2B. De la conception utilisateur initiale au lancement, en passant par la gestion de l'équipe produit et développement."
+        tags={["SaaS", "Product Design", "Go-to-Market"]}
+      />
+
+      <ProjectCard
+        title="Transformation Digitale"
+        description="Accompagnement d'une organisation de 500+ personnes dans sa transformation digitale globale. Définition de la stratégie, changement culturel, et mise en place des outils."
+        tags={["Digital", "Transformation", "Change Management"]}
+      />
+
+      <ProjectCard
+        title="Stratégie Data"
+        description="Création d'une véritable stratégie data au sein d'une organisation. Mise en place de gouvernance, formation des équipes, et intégration data dans les processus produit."
+        tags={["Data", "Analytics", "Strategy"]}
+      />
+
+      <ProjectCard
+        title="Leadership Formation"
+        description="Design et livraison de formations en leadership, product management, et agilité pour plus de 200 personnes. Approche pratique et orientée résultats."
+        tags={["Formation", "Leadership", "Training"]}
+      />
+    </div>
+
+    <!-- CTA -->
+    <section class="mt-20 pt-16 border-t border-gray-200">
+      <div class="bg-primary-50 rounded-lg p-8 md:p-12 text-center">
+        <h2 class="text-3xl font-bold mb-4">Vous avez un projet similaire ?</h2>
+        <p class="text-lg text-gray-600 mb-6">
+          Je serais ravi de discuter de comment mon expérience peut contribuer à votre succès.
+        </p>
+        <a href="#contact" class="inline-block bg-primary-600 hover:bg-primary-700 text-white font-bold py-3 px-8 rounded-lg transition-colors">
+          Parlons de votre projet
+        </a>
+      </div>
+    </section>
+  </div>
+</BaseLayout>

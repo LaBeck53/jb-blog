@@ -1,0 +1,46 @@
+---
+const navItems = [
+  { label: 'Accueil', href: '/' },
+  { label: 'À Propos', href: '/about' },
+  { label: 'Projets', href: '/projects' },
+  { label: 'Blog', href: '/blog' },
+];
+
+const currentUrl = Astro.url.pathname;
+---
+
+<header class="sticky top-0 z-50 bg-white border-b border-gray-200">
+  <nav class="max-w-6xl mx-auto px-4 py-4">
+    <div class="flex items-center justify-between">
+      <!-- Logo/Brand -->
+      <a href="/" class="text-2xl font-bold text-primary-600 hover:text-primary-700">
+        JB.
+      </a>
+
+      <!-- Navigation -->
+      <ul class="hidden md:flex items-center gap-8">
+        {navItems.map(item => (
+          <li>
+            <a 
+              href={item.href}
+              class={`font-medium transition-colors ${
+                currentUrl === item.href 
+                  ? 'text-primary-600 border-b-2 border-primary-600' 
+                  : 'text-gray-700 hover:text-primary-600'
+              }`}
+            >
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+
+      <!-- Mobile Menu Toggle (optional) -->
+      <button class="md:hidden text-gray-600 hover:text-gray-900">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+  </nav>
+</header>
