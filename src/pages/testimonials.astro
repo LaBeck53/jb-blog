@@ -1,0 +1,83 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import TestimonialCard from '../components/TestimonialCard.astro';
+import { testimonials } from '../data/testimonials';
+
+const featuredTestimonials = testimonials.filter(t => t.featured);
+const otherTestimonials = testimonials.filter(t => !t.featured);
+---
+
+<BaseLayout title="Témoignages - Julien Bechkri" description="Découvrez les témoignages de mes clients, collaborateurs et managers sur mon expertise en Product Management et transformation agile.">
+  <!-- Hero -->
+  <div class="bg-gradient-to-br from-blue-600 via-blue-700 to-orange-500 text-white py-16">
+    <div class="max-w-6xl mx-auto px-4">
+      <h1 class="text-5xl md:text-6xl font-bold mb-4">Témoignages</h1>
+      <p class="text-xl text-blue-100 max-w-2xl">
+        Les retours authentiques de mes clients, collaborateurs et anciens directeurs sur mon impact en gestion produit, agilité et transformation digitale.
+      </p>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="max-w-6xl mx-auto px-4 py-20">
+    <!-- Featured Testimonials -->
+    <div class="mb-20">
+      <h2 class="text-3xl font-bold mb-4 flex items-center gap-2">
+        <span class="text-orange-500">★★★★★</span>
+        Recommandations Principales
+      </h2>
+      <p class="text-gray-600 mb-8">Ces témoignages proviennent de mes clients les plus récents et de projets majeurs.</p>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {featuredTestimonials.map((testimonial) => (
+          <TestimonialCard testimonial={testimonial} featured={true} />
+        ))}
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="bg-gray-50 rounded-xl p-8 mb-20 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+      <div>
+        <p class="text-3xl font-bold text-blue-600 mb-2">{testimonials.length}+</p>
+        <p class="text-gray-600">Témoignages</p>
+      </div>
+      <div>
+        <p class="text-3xl font-bold text-orange-500 mb-2">15+</p>
+        <p class="text-gray-600">Années d'expérience</p>
+      </div>
+      <div>
+        <p class="text-3xl font-bold text-blue-600 mb-2">100+</p>
+        <p class="text-gray-600">Projets livrés</p>
+      </div>
+      <div>
+        <p class="text-3xl font-bold text-orange-500 mb-2">30+</p>
+        <p class="text-gray-600">Entreprises</p>
+      </div>
+    </div>
+
+    <!-- Other Testimonials -->
+    <div>
+      <h2 class="text-3xl font-bold mb-4">Autres Recommandations</h2>
+      <p class="text-gray-600 mb-8">Retours de collaborateurs et anciens directeurs.</p>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {otherTestimonials.map((testimonial) => (
+          <TestimonialCard testimonial={testimonial} featured={false} />
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA Section -->
+  <section class="bg-gradient-to-r from-blue-600 to-orange-500 text-white py-16 mt-20">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">Prêt à transformer votre approche produit ?</h2>
+      <p class="text-xl mb-8 text-blue-100">
+        Discutons de vos défis et de comment je peux vous aider à atteindre vos objectifs.
+      </p>
+      <a href="mailto:julien.bechkri@digilityx.com" class="inline-block bg-white text-blue-600 hover:bg-gray-100 font-bold py-3 px-8 rounded-lg transition-colors">
+        Me Contacter
+      </a>
+    </div>
+  </section>
+</BaseLayout>

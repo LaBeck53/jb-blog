@@ -3,6 +3,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
 import ArticleCard from '../components/ArticleCard.astro';
 import ProjectCard from '../components/ProjectCard.astro';
+import TestimonialCard from '../components/TestimonialCard.astro';
+import { testimonials } from '../data/testimonials';
+
+const featuredTestimonials = testimonials.filter(t => t.featured).slice(0, 3);
 ---
 
 <BaseLayout title="Julien Bechkri - Product Manager & Agiliste">
@@ -33,6 +37,28 @@ import ProjectCard from '../components/ProjectCard.astro';
         <div class="bg-gray-200 rounded-lg h-64 flex items-center justify-center">
           <p class="text-gray-500">Photo professionnel (à ajouter)</p>
         </div>
+      </div>
+    </div>
+
+    <!-- Testimonials Section -->
+    <div class="mb-20">
+      <div class="mb-12 text-center">
+        <h2 class="text-3xl font-bold mb-4">Ce que mes clients disent</h2>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+          Des retours authentiques de mes clients, collaborateurs et anciens directeurs sur mon impact en gestion produit et transformation agile.
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        {featuredTestimonials.map((testimonial) => (
+          <TestimonialCard testimonial={testimonial} featured={true} />
+        ))}
+      </div>
+
+      <div class="text-center">
+        <a href="/testimonials" class="inline-flex items-center gap-2 text-primary-600 hover:text-primary-700 font-semibold">
+          Lire tous les témoignages →
+        </a>
       </div>
     </div>
 

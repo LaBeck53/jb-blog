@@ -1,5 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import TestimonialCard from '../components/TestimonialCard.astro';
+import { testimonials } from '../data/testimonials';
+
+const featuredTestimonials = testimonials.filter(t => t.featured).slice(0, 3);
 ---
 
 <BaseLayout title="À Propos - Julien Bechkri" description="Découvrez mon parcours, mon expérience et mes compétences en Product Management et transformation digitale">
@@ -188,6 +192,26 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <h3 class="text-lg font-bold">Certifications</h3>
           <p class="text-gray-600">Certified Scrum Product Owner (CSPO) - Scrum.org · Émise mai 2007</p>
         </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="mt-20 pt-16 border-t border-gray-200">
+      <h2 class="text-3xl font-bold mb-4">Ce que mes clients disent</h2>
+      <p class="text-gray-600 mb-8">
+        Des retours authentiques de mes clients et collaborateurs sur mon impact.
+      </p>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        {featuredTestimonials.map((testimonial) => (
+          <TestimonialCard testimonial={testimonial} featured={true} />
+        ))}
+      </div>
+
+      <div class="text-center">
+        <a href="/testimonials" class="inline-flex items-center gap-2 text-primary-600 hover:text-primary-700 font-semibold">
+          Lire tous les témoignages →
+        </a>
       </div>
     </section>
   </div>
