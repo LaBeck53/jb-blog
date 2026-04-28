@@ -1,0 +1,50 @@
+---
+import { getCollection, getEntry } from 'astro:content';
+import BlogLayout from '../../layouts/BlogLayout.astro';
+
+export async function getStaticPaths() {
+  const blogEntries = await getCollection('blog');
+  return blogEntries.map(entry => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+
+<BlogLayout
+  title={`${entry.data.title} - Julien Bechkri`}
+  description={entry.data.description}
+  pubDate={entry.data.pubDate}
+  tags={entry.data.tags}
+>
+  <article class="max-w-4xl mx-auto">
+    <header class="mb-8">
+      <h1 class="text-4xl font-bold mb-4">{entry.data.title}</h1>
+      <p class="text-xl text-gray-600 mb-4">{entry.data.description}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500">
+        <time datetime={entry.data.pubDate.toISOString()}>
+          {entry.data.pubDate.toLocaleDateString('fr-FR', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+          })}
+        </time>
+        <span>•</span>
+        <div class="flex gap-2">
+          {entry.data.tags.map(tag => (
+            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs">
+              {tag}
+            </span>
+          ))}
+        </div>
+      </div>
+    </header>
+
+    <div class="prose prose-lg max-w-none">
+      <Content />
+    </div>
+  </article>
+</BlogLayout>

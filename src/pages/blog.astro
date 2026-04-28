@@ -1,6 +1,10 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ArticleCard from '../components/ArticleCard.astro';
+import { getCollection } from 'astro:content';
+
+const blogEntries = await getCollection('blog');
+const articles = blogEntries.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
 
 <BaseLayout title="Blog - Julien Bechkri" description="Mes articles et réflexions sur la gestion produit, l'agilité et la transformation digitale">
@@ -15,39 +19,50 @@ import ArticleCard from '../components/ArticleCard.astro';
 
     <!-- Articles Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-20">
+      {articles.map((article) => (
+        <ArticleCard
+          title={article.data.title}
+          description={article.data.description}
+          date={article.data.pubDate.toISOString().split('T')[0]}
+          tags={article.data.tags}
+          url={`/blog/${article.slug}`}
+        />
+      ))}
+
+      <!-- Articles externes existants -->
       <ArticleCard
         title="Les 5 principes clés de la gestion agile"
-          description="Découvrez les fondamentaux de l'agilité et comment les appliquer dans votre contexte d'entreprise pour améliorer l'efficacité opérationnelle et la satisfaction client."
-          date="2026-04-15"
-          tags={["Agilité", "Management"]}
-          external={true}
-          url="https://blog-entreprise.com/article-1"
-        />
+        description="Découvrez les fondamentaux de l'agilité et comment les appliquer dans votre contexte d'entreprise pour améliorer l'efficacité opérationnelle et la satisfaction client."
+        date="2026-04-15"
+        tags={["Agilité", "Management"]}
+        external={true}
+        url="https://blog-entreprise.com/article-1"
+      />
 
-        <ArticleCard
-          title="Product Management : Vision vs Exécution"
-          description="Comment trouver l'équilibre entre une vision ambitieuse et une exécution pragmatique dans la gestion de produits digitaux complexes."
-          date="2026-04-10"
-          tags={["Product", "Stratégie"]}
-          external={true}
-          url="https://blog-entreprise.com/article-2"
-        />
+      <ArticleCard
+        title="Product Management : Vision vs Exécution"
+        description="Comment trouver l'équilibre entre une vision ambitieuse et une exécution pragmatique dans la gestion de produits digitaux complexes."
+        date="2026-04-10"
+        tags={["Product", "Stratégie"]}
+        external={true}
+        url="https://blog-entreprise.com/article-2"
+      />
 
-        <ArticleCard
-          title="Transformation digitale : Au-delà de la technologie"
-          description="La transformation digitale, c'est d'abord une question de culture et de mindset. Comment accompagner le changement humain dans les organisations."
-          date="2026-04-05"
-          tags={["Digital", "Transformation"]}
-          external={true}
-          url="https://blog-entreprise.com/article-3"
-        />
+      <ArticleCard
+        title="Transformation digitale : Au-delà de la technologie"
+        description="La transformation digitale, c'est d'abord une question de culture et de mindset. Comment accompagner le changement humain dans les organisations."
+        date="2026-04-05"
+        tags={["Digital", "Transformation"]}
+        external={true}
+        url="https://blog-entreprise.com/article-3"
+      />
 
-        <ArticleCard
-          title="Métriques produit : Au-delà des vanity metrics"
-          description="Quelles métriques vraiment importent pour votre produit et comment les suivre efficacement pour prendre de meilleures décisions."
-          date="2026-03-28"
-          tags={["Analytics", "Product"]}
-          external={true}
+      <ArticleCard
+        title="Métriques produit : Au-delà des vanity metrics"
+        description="Quelles métriques vraiment importent pour votre produit et comment les suivre efficacement pour prendre de meilleures décisions."
+        date="2026-03-28"
+        tags={["Analytics", "Product"]}
+        external={true}
           url="https://blog-entreprise.com/article-4"
         />
 
