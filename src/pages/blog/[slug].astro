@@ -1,6 +1,6 @@
 ---
 import { getCollection, getEntry } from 'astro:content';
-import BlogLayout from '../../layouts/BlogLayout.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
 
 export async function getStaticPaths() {
   const blogEntries = await getCollection('blog');
@@ -12,39 +12,221 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content } = await entry.render();
+
+// Extraire les headings du contenu pour créer le sommaire
+const headings = [];
+const contentString = await entry.rendered?.html || '';
+const headingRegex = /<h([2-3])[^>]*>(.*?)<\/h[2-3]>/g;
+let match;
+while ((match = headingRegex.exec(contentString)) !== null) {
+  const level = parseInt(match[1]);
+  const text = match[2].replace(/<[^>]*>/g, ''); // Remove HTML tags
+  const id = text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+  headings.push({ level, text, id });
+}
 ---
 
-<BlogLayout
-  title={`${entry.data.title} - Julien Bechkri`}
-  description={entry.data.description}
-  pubDate={entry.data.pubDate}
-  tags={entry.data.tags}
->
-  <article class="max-w-4xl mx-auto">
-    <header class="mb-8">
-      <h1 class="text-4xl font-bold mb-4">{entry.data.title}</h1>
-      <p class="text-xl text-gray-600 mb-4">{entry.data.description}</p>
-      <div class="flex items-center gap-4 text-sm text-gray-500">
-        <time datetime={entry.data.pubDate.toISOString()}>
-          {entry.data.pubDate.toLocaleDateString('fr-FR', {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric'
-          })}
-        </time>
-        <span>•</span>
-        <div class="flex gap-2">
+<BaseLayout title={`${entry.data.title} - Julien Bechkri`} description={entry.data.description}>
+  <!-- Hero Header -->
+  <div class="relative bg-gradient-to-br from-blue-600 via-blue-700 to-orange-500 text-white">
+    <div class="absolute inset-0 bg-black/20"></div>
+    <div class="relative max-w-7xl mx-auto px-4 py-20">
+      <div class="max-w-4xl">
+        <div class="flex items-center gap-2 mb-4">
+          <span class="bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-medium">
+            Article
+          </span>
+          <span class="text-white/80">•</span>
+          <time class="text-white/80 text-sm">
+            {entry.data.pubDate.toLocaleDateString('fr-FR', {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric'
+            })}
+          </time>
+        </div>
+        <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+          {entry.data.title}
+        </h1>
+        <p class="text-xl md:text-2xl text-blue-100 mb-8 leading-relaxed">
+          {entry.data.description}
+        </p>
+        <div class="flex flex-wrap gap-2">
           {entry.data.tags.map(tag => (
-            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs">
+            <span class="bg-white/10 backdrop-blur-sm border border-white/20 px-4 py-2 rounded-full text-sm font-medium">
               {tag}
             </span>
           ))}
         </div>
       </div>
-    </header>
-
-    <div class="prose prose-lg max-w-none">
-      <Content />
     </div>
-  </article>
-</BlogLayout>
+  </div>
+
+  <!-- Main Content Layout -->
+  <div class="max-w-7xl mx-auto px-4 py-16">
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+      <!-- Table of Contents - Left Sidebar -->
+      <aside class="lg:col-span-1">
+        <div class="sticky top-8">
+          <div class="bg-white rounded-xl shadow-lg border border-gray-100 p-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
+              <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"></path>
+              </svg>
+              Sommaire
+            </h3>
+            <nav class="space-y-2">
+              {headings.map((heading) => (
+                <a
+                  href={`#${heading.id}`}
+                  class={`block text-sm py-2 px-3 rounded-lg transition-all duration-200 hover:bg-blue-50 hover:text-blue-700 ${
+                    heading.level === 2 ? 'font-medium text-gray-900' : 'text-gray-600 ml-4'
+                  }`}
+                >
+                  {heading.text}
+                </a>
+              ))}
+            </nav>
+          </div>
+
+          <!-- Author Card -->
+          <div class="bg-gradient-to-br from-blue-50 to-orange-50 rounded-xl p-6 mt-6 border border-blue-100">
+            <div class="flex items-center gap-4 mb-4">
+              <div class="w-12 h-12 bg-gradient-to-br from-blue-600 to-orange-500 rounded-full flex items-center justify-center text-white font-bold text-lg">
+                JB
+              </div>
+              <div>
+                <h4 class="font-semibold text-gray-900">Julien Bechkri</h4>
+                <p class="text-sm text-gray-600">Lead Product Manager</p>
+              </div>
+            </div>
+            <p class="text-sm text-gray-700 leading-relaxed">
+              Expert en transformation digitale et gestion produit, avec 15+ années d'expérience dans l'accompagnement des entreprises.
+            </p>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="lg:col-span-3">
+        <article class="prose prose-lg max-w-none">
+          <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-8 md:p-12">
+            <Content />
+          </div>
+        </article>
+
+        <!-- Share Section -->
+        <div class="mt-12 bg-gradient-to-r from-blue-50 to-orange-50 rounded-xl p-8 border border-blue-100">
+          <h3 class="text-xl font-semibold text-gray-900 mb-4">Partager cet article</h3>
+          <div class="flex gap-4">
+            <button class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-200 flex items-center gap-2">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+              </svg>
+              Twitter
+            </button>
+            <button class="bg-blue-800 hover:bg-blue-900 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-200 flex items-center gap-2">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+              </svg>
+              LinkedIn
+            </button>
+          </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="mt-12 flex justify-between items-center">
+          <a href="/blog" class="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium transition-colors duration-200">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+            Retour au blog
+          </a>
+          <button class="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-200">
+            Suivant →
+          </button>
+        </div>
+      </main>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  /* Custom prose styles */
+  .prose h2 {
+    @apply text-3xl font-bold text-gray-900 mt-12 mb-6;
+  }
+
+  .prose h3 {
+    @apply text-2xl font-semibold text-gray-800 mt-8 mb-4;
+  }
+
+  .prose p {
+    @apply text-gray-700 leading-relaxed mb-6;
+  }
+
+  .prose ul {
+    @apply list-disc list-inside text-gray-700 mb-6 space-y-2;
+  }
+
+  .prose ol {
+    @apply list-decimal list-inside text-gray-700 mb-6 space-y-2;
+  }
+
+  .prose li {
+    @apply leading-relaxed;
+  }
+
+  .prose strong {
+    @apply font-semibold text-gray-900;
+  }
+
+  .prose blockquote {
+    @apply border-l-4 border-blue-500 pl-6 italic text-gray-600 my-8 bg-blue-50 py-4 pr-4 rounded-r-lg;
+  }
+
+  /* Smooth scroll for table of contents */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Add IDs to headings for table of contents navigation */
+  .prose h2, .prose h3 {
+    scroll-margin-top: 2rem;
+  }
+</style>
+
+<script>
+  // Add IDs to headings for table of contents navigation
+  document.addEventListener('DOMContentLoaded', () => {
+    const headings = document.querySelectorAll('.prose h2, .prose h3');
+    headings.forEach(heading => {
+      const text = heading.textContent || '';
+      const id = text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+      heading.id = id;
+    });
+
+    // Highlight active section in table of contents
+    const observerOptions = {
+      rootMargin: '-80px 0px -80% 0px',
+      threshold: 0
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const tocLink = document.querySelector(`a[href="#${entry.target.id}"]`);
+        if (tocLink) {
+          if (entry.isIntersecting) {
+            tocLink.classList.add('bg-blue-100', 'text-blue-700', 'font-medium');
+          } else {
+            tocLink.classList.remove('bg-blue-100', 'text-blue-700', 'font-medium');
+          }
+        }
+      });
+    }, observerOptions);
+
+    headings.forEach(heading => {
+      observer.observe(heading);
+    });
+  });
+</script>
