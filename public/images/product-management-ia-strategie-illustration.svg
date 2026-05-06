@@ -1,0 +1,42 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0F4C81" />
+      <stop offset="100%" stop-color="#F97316" />
+    </linearGradient>
+    <linearGradient id="shape" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.85" />
+      <stop offset="100%" stop-color="#F8FAFC" stop-opacity="0.55" />
+    </linearGradient>
+    <filter id="shadow" x="0" y="0" width="1200" height="630" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="12" stdDeviation="20" flood-color="#000" flood-opacity="0.12" />
+    </filter>
+  </defs>
+  <rect width="1200" height="630" rx="40" fill="url(#bg)" />
+  <path d="M220 120C220 70 270 30 330 30H870C930 30 980 70 980 120V510C980 560 930 600 870 600H330C270 600 220 560 220 510V120Z" fill="url(#shape)" filter="url(#shadow)" />
+  <rect x="300" y="140" width="600" height="70" rx="18" fill="#0F172A" opacity="0.92" />
+  <rect x="320" y="170" width="240" height="18" rx="9" fill="#38BDF8" />
+  <rect x="320" y="210" width="360" height="18" rx="9" fill="#F97316" />
+  <rect x="320" y="250" width="450" height="18" rx="9" fill="#22C55E" />
+  <g opacity="0.95">
+    <rect x="350" y="330" width="180" height="200" rx="18" fill="#E2E8F0" />
+    <rect x="360" y="350" width="160" height="28" rx="10" fill="#0F172A" />
+    <circle cx="420" cy="440" r="28" fill="#2563EB" />
+    <rect x="470" y="360" width="100" height="24" rx="12" fill="#93C5FD" />
+    <rect x="470" y="400" width="100" height="24" rx="12" fill="#A7F3D0" />
+    <rect x="470" y="440" width="100" height="24" rx="12" fill="#FDBA74" />
+  </g>
+  <g opacity="0.95">
+    <circle cx="760" cy="430" r="110" fill="#1D4ED8" />
+    <path d="M760 330C790 330 815 355 815 385C815 392 813 398 810 405L760 430L710 405C707 398 705 392 705 385C705 355 730 330 760 330Z" fill="#fff" />
+    <path d="M760 375C775 375 787 387 787 402C787 417 775 429 760 429C745 429 733 417 733 402C733 387 745 375 760 375Z" fill="#0F172A" />
+    <rect x="756" y="289" width="8" height="42" rx="4" fill="#fff" />
+  </g>
+  <g>
+    <circle cx="510" cy="205" r="48" fill="#FBBF24" />
+    <path d="M510 172C520 172 528 180 528 190C528 200 520 208 510 208C500 208 492 200 492 190C492 180 500 172 510 172Z" fill="#0F172A" />
+    <path d="M486 228C492 226 513 224 538 234" stroke="#0F172A" stroke-width="6" stroke-linecap="round" />
+  </g>
+  <text x="90" y="530" fill="#fff" font-family="Inter, Arial, sans-serif" font-size="42" font-weight="700">Product Management</text>
+  <text x="90" y="586" fill="#fff" font-family="Inter, Arial, sans-serif" font-size="28">IA, stratégie et transformation</text>
+</svg>

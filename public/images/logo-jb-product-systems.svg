@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="380" height="72" viewBox="0 0 380 72" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style><![CDATA[
+      .stroke { fill: none; stroke: #0A1A2F; stroke-width: 3; stroke-linecap: round; }
+      .text-jb { fill: #0A1A2F; font-family: Inter, Arial, sans-serif; font-size: 28px; font-weight: 700; }
+      .text-product { fill: #0A1A2F; font-family: Inter, Arial, sans-serif; font-size: 18px; font-weight: 500; }
+      .text-tagline { fill: #2563EB; font-family: Inter, Arial, sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.25em; }
+    ]]></style>
+  </defs>
+
+  <g transform="translate(0, 0)">
+    <circle class="stroke" cx="32" cy="36" r="28" />
+    <line class="stroke" x1="32" y1="14" x2="32" y2="26" />
+    <line class="stroke" x1="54" y1="36" x2="38" y2="36" />
+    <line class="stroke" x1="32" y1="58" x2="32" y2="46" />
+    <line class="stroke" x1="10" y1="36" x2="26" y2="36" />
+    <circle cx="32" cy="36" r="4" fill="#2563EB" />
+  </g>
+
+  <rect x="68" y="16" width="1" height="40" fill="#0A1A2F" opacity="0.35" />
+
+  <text x="86" y="34" class="text-jb">JB</text>
+
+  <g transform="translate(150, 24)">
+    <circle cx="0" cy="0" r="12" class="stroke" />
+    <circle cx="0" cy="0" r="4" fill="#0A1A2F" />
+    <line class="stroke" x1="0" y1="-12" x2="0" y2="-4" />
+    <line class="stroke" x1="0" y1="4" x2="0" y2="12" />
+    <line class="stroke" x1="-8" y1="0" x2="-4" y2="0" />
+    <line class="stroke" x1="4" y1="0" x2="8" y2="0" />
+  </g>
+
+  <text x="176" y="36" class="text-product">Product Systems</text>
+  <text x="86" y="56" class="text-tagline">STRUCTURE. DECIDE. DELIVER.</text>
+</svg>

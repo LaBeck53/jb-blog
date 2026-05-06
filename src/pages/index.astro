@@ -12,9 +12,10 @@ const featuredTestimonials = testimonials.filter(t => t.featured).slice(0, 3);
 <BaseLayout title="Julien Bechkri - Product Manager & Agiliste">
   <!-- Hero Section -->
   <Hero 
-    title="Julien Bechkri"
-    subtitle="Digital Transformation & Organisation - Head of Product Management"
-    cta={{ text: "Découvrir mon travail", href: "#featured" }}
+    title="Transformer la complexité en impact durable."
+    subtitle="J'accompagne les organisations IT et Produit à piloter par la valeur, faire les bons choix et délivrer ce qui compte vraiment."
+    ctaPrimary={{ text: "DÉCOUVRIR MON EXPERTISE", href: "/about" }}
+    ctaSecondary={{ text: "VOIR DES RÉALISATIONS", href: "/projects" }}
   />
 
   <!-- Featured Section -->
@@ -78,6 +79,7 @@ const featuredTestimonials = testimonials.filter(t => t.featured).slice(0, 3);
           date="2026-04-15"
           tags={["Agilité", "Management"]}
           external={true}
+          category="Agile"
           url="https://blog-entreprise.com/article-1"
         />
         <ArticleCard
@@ -86,6 +88,7 @@ const featuredTestimonials = testimonials.filter(t => t.featured).slice(0, 3);
           date="2026-04-10"
           tags={["Product", "Stratégie"]}
           external={true}
+          category="Product"
           url="https://blog-entreprise.com/article-2"
         />
         <ArticleCard
@@ -94,6 +97,7 @@ const featuredTestimonials = testimonials.filter(t => t.featured).slice(0, 3);
           date="2026-04-05"
           tags={["Digital", "Transformation"]}
           external={true}
+          category="Digital"
           url="https://blog-entreprise.com/article-3"
         />
       </div>
@@ -124,15 +128,23 @@ const featuredTestimonials = testimonials.filter(t => t.featured).slice(0, 3);
   </section>
 
   <!-- CTA Section -->
-  <section class="bg-primary-600 text-white py-16">
-    <div class="max-w-4xl mx-auto px-4 text-center">
-      <h2 class="text-3xl md:text-4xl font-bold mb-4">Vous avez un projet en tête ?</h2>
-      <p class="text-xl mb-8 opacity-90">
-        Discutons de comment je peux vous aider à transformer votre approche produit et vos processus agiles.
-      </p>
-      <a href="#contact" class="inline-block bg-white text-primary-600 hover:bg-gray-100 font-bold py-3 px-8 rounded-lg transition-colors">
-        Prenons contact
-      </a>
+  <section class="py-20">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="overflow-hidden rounded-[2rem] border border-slate-200 bg-slate-50 shadow-[0_24px_80px_-40px_rgba(15,23,42,0.18)]">
+        <div class="grid gap-8 lg:grid-cols-[1.6fr_1fr] items-center px-6 py-10 sm:px-10 sm:py-12">
+          <div class="space-y-4">
+            <h2 class="text-4xl font-semibold text-slate-950">Vous avez un projet en tête ?</h2>
+            <p class="max-w-2xl text-lg leading-relaxed text-slate-600">
+              30 minutes pour comprendre votre contexte et vous dire si on peut vous aider. Sans engagement.
+            </p>
+          </div>
+          <div class="flex items-center justify-start lg:justify-end">
+            <a href="#contact" class="inline-flex items-center justify-center rounded-full bg-slate-950 px-8 py-4 text-sm font-semibold text-white shadow-lg shadow-slate-950/20 transition hover:bg-slate-800">
+              Réserver un échange
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 </BaseLayout>

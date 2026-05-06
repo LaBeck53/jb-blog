@@ -5,30 +5,31 @@
 /* Custom Styles */
 
 :root {
-  --primary: #0ea5e9;
-  --primary-dark: #0284c7;
-  --accent: #f97316;
-  --dark: #1f2937;
-  --light: #f9fafb;
+  --bg: #f8fafc;
+  --surface: #ffffff;
+  --surface-soft: #f8fafc;
+  --text: #0f172a;
+  --muted: #64748b;
+  --brand: #2563eb;
+  --brand-dark: #1d4ed8;
+  --accent: #22c55e;
 }
 
-/* Smooth scroll */
 html {
   scroll-behavior: smooth;
 }
 
-/* Typography */
 body {
-  @apply bg-white text-gray-900 font-sans;
+  @apply bg-neutral-50 text-neutral-900 font-sans;
   font-feature-settings: 'kern';
 }
 
 h1, h2, h3, h4, h5, h6 {
-  @apply font-bold text-gray-900;
+  @apply font-semibold text-neutral-900;
 }
 
 h1 {
-  @apply text-4xl md:text-5xl;
+  @apply text-4xl md:text-5xl lg:text-6xl tracking-[-0.03em];
 }
 
 h2 {
@@ -39,31 +40,37 @@ h3 {
   @apply text-2xl md:text-3xl;
 }
 
-/* Links */
-a {
-  @apply text-primary-600 hover:text-primary-700 transition-colors;
+p, li {
+  @apply text-neutral-700 leading-relaxed;
 }
 
-/* Code blocks */
+a {
+  @apply text-brand-600 hover:text-brand-700 transition-colors;
+}
+
+button, input, textarea {
+  @apply font-sans;
+}
+
 code {
-  @apply bg-gray-100 px-2 py-1 rounded text-sm;
+  @apply bg-neutral-100 px-2 py-1 rounded text-sm;
 }
 
 pre {
-  @apply bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto;
+  @apply bg-slate-950 text-slate-100 p-5 rounded-3xl overflow-x-auto;
 }
 
 pre code {
   @apply bg-transparent px-0 py-0;
 }
 
-/* Focus states */
 button:focus,
-a:focus {
-  @apply outline-none ring-2 ring-offset-2 ring-primary-500;
+a:focus,
+input:focus,
+textarea:focus {
+  @apply outline-none ring-2 ring-offset-2 ring-brand-500;
 }
 
-/* Animations */
 @keyframes fadeIn {
   from {
     opacity: 0;

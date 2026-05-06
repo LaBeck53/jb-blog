@@ -8,28 +8,42 @@ const articles = blogEntries.sort((a, b) => b.data.pubDate.valueOf() - a.data.pu
 ---
 
 <BaseLayout title="Blog - Julien Bechkri" description="Mes articles et réflexions sur la gestion produit, l'agilité et la transformation digitale">
-  <div class="max-w-6xl mx-auto px-4 py-16">
-    <!-- Header -->
-    <div class="mb-16">
-      <h1 class="text-5xl font-bold mb-4">Articles & Réflexions</h1>
-      <p class="text-xl text-gray-600">
-        Mes pensées sur la gestion de produit, l'agilité, la transformation digitale, et le leadership.
+  <section class="relative overflow-hidden bg-slate-950 text-white px-6 py-16 md:px-12 md:py-20 mb-16">
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(56,189,248,0.18),_transparent_22%),radial-gradient(circle_at_80%_30%,_rgba(139,92,246,0.14),_transparent_22%)]"></div>
+    <div class="absolute inset-0 bg-[linear-gradient(180deg,_rgba(15,23,42,0.95),_rgba(15,23,42,0.80))]"></div>
+    <div class="relative mx-auto max-w-5xl text-center">
+      <p class="text-sm uppercase tracking-[0.32em] text-brand-300 mb-4">Blog</p>
+      <h1 class="text-4xl md:text-5xl xl:text-6xl font-semibold leading-tight text-white">
+        Des insights et des réflexions Product utiles.
+      </h1>
+      <p class="mt-6 mx-auto max-w-3xl text-lg text-slate-300 leading-relaxed">
+        Des points de vue concrets sur le product management, l'agilité, l'organisation et l'innovation digitale.
       </p>
+      <div class="mt-10 flex flex-wrap justify-center gap-4">
+        <a href="#articles" class="inline-flex items-center justify-center rounded-full bg-brand-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-brand-600/20 transition hover:bg-brand-700">
+          Voir les articles
+        </a>
+        <a href="/contact" class="inline-flex items-center justify-center rounded-full border border-white/20 bg-white/5 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10">
+          Discuter de votre projet
+        </a>
+      </div>
     </div>
+  </section>
 
-    <!-- Articles Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-20">
+  <div id="articles" class="max-w-7xl mx-auto px-4 py-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
       {articles.map((article) => (
         <ArticleCard
           title={article.data.title}
           description={article.data.description}
           date={article.data.pubDate.toISOString().split('T')[0]}
           tags={article.data.tags}
+          category={article.data.tags?.[0] ?? 'Article'}
+          eyecatchImage={article.data.heroImage}
           url={`/blog/${article.slug}`}
         />
       ))}
 
-      <!-- Articles externes existants -->
       <ArticleCard
         title="Les 5 principes clés de la gestion agile"
         description="Découvrez les fondamentaux de l'agilité et comment les appliquer dans votre contexte d'entreprise pour améliorer l'efficacité opérationnelle et la satisfaction client."
@@ -63,31 +77,38 @@ const articles = blogEntries.sort((a, b) => b.data.pubDate.valueOf() - a.data.pu
         date="2026-03-28"
         tags={["Analytics", "Product"]}
         external={true}
-          url="https://blog-entreprise.com/article-4"
-        />
+        url="https://blog-entreprise.com/article-4"
+      />
 
-        <ArticleCard
-          title="Conduire le changement sans consulter personne"
-          description="Les secrets pour accompagner une transformation organisationnelle réussie et embarquer toutes les parties prenantes."
-          date="2026-03-20"
-          tags={["Leadership", "Change"]}
-          external={true}
-          url="https://blog-entreprise.com/article-5"
-        />
+      <ArticleCard
+        title="Conduire le changement sans consulter personne"
+        description="Les secrets pour accompagner une transformation organisationnelle réussie et embarquer toutes les parties prenantes."
+        date="2026-03-20"
+        tags={["Leadership", "Change"]}
+        external={true}
+        url="https://blog-entreprise.com/article-5"
+      />
 
-        <ArticleCard
-          title="User Research : Aller au-delà des hypothèses"
-          description="Comment vraiment comprendre vos utilisateurs et valider vos hypothèses produit pour créer des expériences réellement utiles."
+      <ArticleCard
+        title="User Research : Aller au-delà des hypothèses"
+        description="Comment vraiment comprendre vos utilisateurs et valider vos hypothèses produit pour créer des expériences réellement utiles."
+        date="2026-03-12"
+        tags={["UX", "Research"]}
+        external={true}
         url="https://blog-entreprise.com/article-6"
       />
     </div>
 
-    <!-- Info Box -->
-    <div class="bg-primary-50 rounded-lg p-8 text-center">
-      <h2 class="text-2xl font-bold mb-4">Plus d'articles à venir</h2>
-      <p class="text-gray-600 mb-6">
-        Je suis actuellement en train de consolider et publier mes articles. Les liens ci-dessus pointent vers ma blog/plateforme actuelle. Bientôt, les nouveaux articles seront publiés directement ici !
-      </p>
+    <div class="mt-16 rounded-[2rem] bg-slate-900 p-10 text-slate-100">
+      <div class="grid gap-8 lg:grid-cols-3 lg:items-center">
+        <div>
+          <p class="text-sm uppercase tracking-[0.28em] text-brand-300">À venir</p>
+          <h2 class="mt-4 text-3xl font-semibold">Plus de contenu bientôt disponible</h2>
+        </div>
+        <div class="lg:col-span-2 text-slate-400 leading-relaxed">
+          Je suis en train de centraliser tous mes articles dans ce blog. Très prochainement, tu y retrouveras de nouveaux retours d'expérience, analyses produit et guides pratiques directement ici.
+        </div>
+      </div>
     </div>
   </div>
 </BaseLayout>
