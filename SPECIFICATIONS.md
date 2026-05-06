@@ -1,19 +1,21 @@
 # 📋 SPECIFICATIONS TECHNIQUES - JB Blog
 
-**Version**: 1.0.0  
+**Version**: 2.0.0  
 **Status**: 🟢 Actif  
-**Last Updated**: 28 avril 2026  
+**Created**: 28 avril 2026  
+**Last Updated**: 6 mai 2026  
 
 ---
 
 ## 1. SPÉCIFICATIONS GÉNÉRALES
 
 ### 1.1 Objectif du Produit
-Créer une plateforme digitale pour **Julien Bechkri** permettant de:
+Créer une plateforme digitale pour **Julien Bechkri** (marque: **JB Product Systems**) permettant de:
 - 📊 Afficher son expertise en Product Management & Agilité
 - 💼 Présenter son parcours et ses compétences
-- 📚 Centraliser ses publications et articles
+- 📚 Centraliser ses publications et articles (natifs + liens externes)
 - 🤝 Faciliter les contacts/opportunités business
+- ⭐ Valoriser les témoignages de clients/collaborateurs
 
 ### 1.2 Public Cible
 - **Recruteurs** (recherchant PM/Agile experts)
@@ -21,18 +23,26 @@ Créer une plateforme digitale pour **Julien Bechkri** permettant de:
 - **Communauté** (product/agilité)
 - **Réseau professionnel** (LinkedIn, etc.)
 
-### 1.3 Périmètre MVP
-✅ 5 pages statiques  
-✅ Design responsive  
-✅ Pas de CMS backend  
-✅ Liens vers articles externes  
-✅ Déploiement simple  
+### 1.3 Périmètre actuel (MVP+)
 
-❌ HORS PÉRIMÈTRE:
-- Contact form avancée
-- Blog engine complet
+✅ LIVRÉ :
+- 6 pages statiques + route dynamique `/blog/[slug]`
+- Design system complet (brand colors, dark hero, glassmorphism)
+- Blog engine natif (Astro Content Collections)
+- 4 articles natifs Markdown publiés
+- 11 témoignages réels intégrés
+- 6 projets réels décrits
+- Logo JB Product Systems dans le header
+- Page /testimonials dédiée
+
+⏳ EN COURS :
+- Finalisation page /about (contenu réel)
+- Page /contact
+
+❌ HORS PÉRIMÈTRE MVP :
 - User authentication
 - Database
+- CMS dashboard externe
 
 ---
 
@@ -41,133 +51,143 @@ Créer une plateforme digitale pour **Julien Bechkri** permettant de:
 ### 2.1 Page Accueil (`/`)
 
 **Composants requis:**
-- [ ] **Hero Section**
-  - Nom: "Julien Bechkri"
-  - Tagline: "Product Manager • Transformateur Digital • Agiliste"
-  - CTA button: "Découvrir mon travail"
-  - Image/illustration (optionnel)
+- [x] **Hero Section** (dark, glassmorphism)
+  - Tagline: "Transformer la complexité en impact durable."
+  - Sous-titre: accompagnement IT/Produit par la valeur
+  - CTA primaire: "DÉCOUVRIR MON EXPERTISE" → /about
+  - CTA secondaire: "VOIR DES RÉALISATIONS" → /projects
+  - Feature grid: STRUCTURE / DECIDE / DELIVER
 
-- [ ] **Section À Propos** (court)
-  - 2-3 paragraphes max
-  - Photo professionnelle
-  - CTA: "Lire plus → /about"
+- [x] **Section À Propos** (court)
+  - 2 paragraphes vrais (15 ans expérience, agile/IA/design thinking)
+  - CTA: "Lire mon parcours complet → /about"
+  - Placeholder photo pro (à remplacer)
 
-- [ ] **Featured Articles**
-  - Display: 3 articles max
-  - Composant: ArticleCard
-  - Champs: Titre, Description, Date, Tags, Lien externe
-  - CTA: "Voir tous → /blog"
+- [x] **Section Témoignages** (3 featured)
+  - Display: 3 cartes featured issues de `data/testimonials.ts`
+  - CTA: "Lire tous les témoignages → /testimonials"
 
-- [ ] **Featured Projects**
-  - Display: 2 projets max
-  - Composant: ProjectCard
-  - Champs: Titre, Description, Tags
-  - CTA: "Voir tous → /projects"
+- [x] **Section Articles**
+  - Display: 3 ArticleCard (liens externes placeholder)
+  - CTA: "Voir tous les articles → /blog"
 
-- [ ] **CTA Section**
-  - "Vous avez un projet?"
-  - Bouton: "Prenons contact"
+- [x] **Section Projets**
+  - Display: 2 ProjectCard (featured)
+  - CTA: "Voir tous les projets → /projects"
+
+- [x] **CTA Section**
+  - "Vous avez un projet en tête?"
+  - Bouton: "Réserver un échange" → #contact
 
 **Acceptance Criteria:**
 - ✅ Hero visible above the fold
-- ✅ All sections scroll smoothly
-- ✅ Mobile responsive (< 480px)
+- ✅ Témoignages sur l'accueil (crédibilité immédiate)
+- ✅ Mobile responsive
 - ✅ Load time < 2s
 
 ---
 
 ### 2.2 Page À Propos (`/about`)
 
+**Status: ⏳ Contenu template — à finaliser**
+
 **Sections requises:**
-
-1. **Header**
-   - Titre: "Julien Bechkri"
-   - Subtitle: "Product Manager & Expert en Transformation Digitale"
-   - Description courte
-
-2. **Bio Section**
-   - 2-3 paragraphes narratifs
-   - Focus sur: Valeur proposée, Approche
-
-3. **Timeline Expériences**
-   - Format: Frise chronologique verticale
-   - Minimum 3 postes
-   - Champs: Titre, Entreprise, Dates, Description
-   - Visual: Bordure gauche colorée
-
-4. **Compétences** (Grid 4 colonnes)
-   - Product Management
-   - Agilité & Leadership
-   - Digital & Technologie
-   - Autres
-   - Format: Liste avec checkmarks (✓)
-
-5. **Formation**
-   - Écoles/Certifications
-   - Dates
-   - Minimum 1 ligne
+1. **Header** — Titre, subtitle, description courte
+2. **Bio Section** — 2-3 paragraphes narratifs (valeur proposée, approche)
+3. **Timeline Expériences** — Frise verticale, minimum 3 postes réels
+4. **Compétences** — Grid 4 colonnes (Product, Agilité, Digital, Autres)
+5. **Formation** — Écoles/Certifications avec dates
 
 **Acceptance Criteria:**
 - ✅ Contenu minimum 600 mots
-- ✅ Facile à scanner (sections claires)
-- ✅ Pas d'overload d'info
-- ✅ Téléphone friendly
+- [ ] Vraies expériences avec dates réelles
+- [ ] Photo professionnelle en place
 
 ---
 
 ### 2.3 Page Projets (`/projects`)
 
-**Spécifications:**
+**Status: ✅ Complet avec vrais projets**
 
-- **Display**: Grille 2 colonnes (1 sur mobile)
-- **Nombre**: Minimum 4 projets, max 8
-- **Par projet:**
-  - Titre
-  - Description (100-150 mots)
-  - Tags (2-3 max)
-  - Optionnel: Image, lien externe
-
-- **Composant**: ProjectCard réutilisable
-- **CTA finale**: "Vous avez un projet similaire?"
+**Projets actuels:**
+1. Transformation digitale Babilou (12 pays, marketplace BtoBtoC)
+2. Programme Transformation IS&T Alten (post-fusion, M&A)
+3. Digitalisation Parcours Clients (Carac, Generali, Eres)
+4. Plateformes Digitales Corporate (Chanel, Randstad, Resotainer)
+5. Écosystème Digital Pilotage Qualité
+6. Stratégie Data & Analytics
 
 **Acceptance Criteria:**
-- ✅ Cards uniformes
-- ✅ Hover effects
-- ✅ Responsive grid
-- ✅ Descriptions claires
+- ✅ Cards uniformes (rounded-[2rem], brand styles)
+- ✅ Hover effects (-translate-y-1)
+- ✅ Responsive grid (2 colonnes desktop, 1 mobile)
+- ✅ Descriptions réelles
 
 ---
 
 ### 2.4 Page Blog (`/blog`)
 
-**Spécifications:**
+**Status: ✅ Blog engine actif**
 
-- **Display**: Grid 3 colonnes sur desktop, 1 sur mobile
-- **Articles**: 6-12 par page (future pagination)
-- **Composant**: ArticleCard
+**Architecture:**
+- Articles natifs lus via `getCollection('blog')` depuis `src/content/blog/`
+- Articles externes affichés via ArticleCard avec `external={true}`
+- Tri par date décroissante
+- Grid 3 colonnes desktop, 1 mobile
 
-**Par article:**
-- Titre
-- Description (100-150 mots)
-- Date (format FR: "15 avril 2026")
-- Tags (2-3 max)
-- Lien (externe POUR L'INSTANT)
-- Badge "↗" pour externe
+**Articles natifs actuels (4):**
+- Établir une roadmap produit en 10 étapes
+- Qu'est-ce qu'un MVP ? Définition et principes clés
+- Rôles et interactions dans une organisation Produit
+- Product Management & IA : Stratégie (non commité)
 
-**Fonctionnalites futures:**
-- [ ] Filtre par tag
-- [ ] Recherche articles
-- [ ] Articles en Markdown natifs
-- [ ] Pagination
+**Articles externes (6, URLs placeholder):**
+- Les 5 principes clés de la gestion agile
+- Product Management : Vision vs Exécution
+- Transformation digitale : Au-delà de la technologie
+- Métriques produit : Au-delà des vanity metrics
+- Conduire le changement sans consulter personne
+- User Research : Aller au-delà des hypothèses
 
 **Acceptance Criteria:**
-- ✅ Liens externes s'ouvrent en nouveau tab
+- ✅ Liens externes ouvrent dans nouveau tab
 - ✅ Dates formatées en français
-- ✅ Cards harmonieuses
+- ✅ Gradient covers auto-générés (cohérents par titre)
+- ✅ Badge "↗" pour externe
 
 ---
 
-### 2.5 Page 404
+### 2.5 Page Article Individuel (`/blog/[slug]`)
+
+**Status: ✅ Complet**
+
+**Features:**
+- Layout 4 colonnes (1 TOC sidebar + 3 contenu)
+- TOC sticky avec highlighting actif (IntersectionObserver)
+- Hero gradient bleu-orange avec titre, date, tags
+- Article rendu avec `@tailwindcss/typography` (prose lg)
+- Author card dans sidebar
+- Boutons partage (Twitter/LinkedIn, UI seulement)
+- Navigation "Retour au blog"
+
+---
+
+### 2.6 Page Témoignages (`/testimonials`)
+
+**Status: ✅ Complet**
+
+**Sections:**
+- Hero dark (cohérent avec les autres pages)
+- **Recommandations Principales** — 4 featured en grid 2 colonnes
+- **Stats** — Témoignages / Années d'expérience / Projets livrés / Entreprises
+- **Autres Recommandations** — 7 en grid 3 colonnes
+- **CTA** — dark, lien vers email
+
+**Données:** `src/data/testimonials.ts` — interface TypeScript + 11 vrais témoignages LinkedIn
+
+---
+
+### 2.7 Page 404
 
 **Spécifications:**
 - Message humanisé
@@ -180,182 +200,167 @@ Créer une plateforme digitale pour **Julien Bechkri** permettant de:
 
 ### 3.1 Performance
 - Pages < 1.5s de charge initial
-- CSS < 50KB (minifié)
-- Pas de CMS backend (SSG)
-- Images optimisées (< 200KB chaque)
+- CSS purgé par Tailwind (small bundle)
+- Minimal JS (seulement IntersectionObserver sur articles)
+- Images optimisées (< 200KB)
 
 ### 3.2 SEO
-- Meta tags (title, description)
-- Open Graph tags (social sharing)
-- Canonical URLs
-- Mobile responsive (Mobile-first design)
+- Meta tags (title, description) ✅ via BaseLayout props
+- Open Graph tags ⏳ (à ajouter)
+- Canonical URLs ⏳
+- Mobile responsive ✅
 
 ### 3.3 Accessibilité
 - WCAG 2.1 AA minimum
-- Contraste texte/fond ≥ 4.5:1
-- Semantic HTML
+- Semantic HTML (`<article>`, `<aside>`, `<nav>`, `<main>`)
 - Keyboard navigation
 
 ### 3.4 Responsivité
-**Breakpoints:**
-- Mobile: 320px - 480px
-- Tablet: 481px - 768px
-- Desktop: 769px+
-
-### 3.5 Navigateur Support
-- Chrome (latest)
-- Firefox (latest)
-- Safari (latest)
-- Edge (latest)
-
-### 3.6 Compatibilité
-- ✅ Desktop
-- ✅ Tablet
-- ✅ Mobile
-- ✅ Light/Dark mode (optionnel)
+**Breakpoints Tailwind:**
+- Mobile: < 768px (1 colonne)
+- Tablet: 768px+ (md:)
+- Desktop: 1024px+ (lg:) / 1280px+ (xl:)
 
 ---
 
 ## 4. DESIGN SYSTEM
 
-### 4.1 Palette Couleur
+### 4.1 Palette Couleur (tailwind.config.cjs)
 
 ```
-Primary (Confiance):
-  - #0ea5e9 (Bleu ciel) - Default
-  - #0284c7 (Bleu foncé) - Hover
-  - #082f49 (Bleu très foncé) - Active
+Brand (Principal - Bleu):
+  brand-50:  #eef3ff
+  brand-100: #e0e7ff
+  brand-200: #c7d2fe
+  brand-500: #2563eb
+  brand-600: #1d4ed8  ← CTA boutons, liens actifs
+  brand-700: #1e40af  ← hover
+  brand-900: #0f172a
 
-Accent (Énergie):
-  - #f97316 (Orange) - CTAs
+Neutral (Slate):
+  neutral-50:  #f8fafc
+  neutral-400: #94a3b8  ← texte secondaire
+  neutral-500: #64748b
+  neutral-700: #334155
+  neutral-900: #0f172a
 
-Neutrals:
-  - #ffffff (Blanc) - BG
-  - #f9fafb (Gris très clair) - Secondary BG
-  - #1f2937 (Gris foncé) - Texte
-  - #6b7280 (Gris neutre) - Secondary texte
+Accent (Cyan):
+  accent-500: #38bdf8
+  accent-600: #0ea5e9
+  accent-700: #0284c7
 
-Status:
-  - Erreur: #dc2626 (Red)
-  - Succès: #16a34a (Green)
-  - Warning: #ca8a04 (Yellow)
+Highlight (Vert):
+  highlight-500: #22c55e
+  highlight-600: #16a34a
+
+Backgrounds:
+  Sections dark: bg-slate-950 (#0f172a)
+  Cards: bg-white
+  Sections claires: bg-brand-50 ou bg-slate-50
 ```
 
 ### 4.2 Typography
 
 ```
-Font-family: Inter (sans-serif)
-Font-fallback: system-ui, sans-serif
+Font-family: Inter (sans-serif) / Georgia (serif)
+Plugin: @tailwindcss/typography pour articles (classe prose)
 
-Scale:
-  H1: 3rem (mobile) / 3.75rem (desktop)
-  H2: 1.875rem / 2.25rem
-  H3: 1.5rem / 1.875rem
-  Body: 1rem
-  Small: 0.875rem
+Scale responsive:
+  H1: text-4xl md:text-5xl xl:text-6xl font-semibold
+  H2: text-3xl font-bold (ou font-semibold)
+  H3: text-2xl font-semibold
+  Body: text-base leading-relaxed text-slate-600
 
-Line-height:
-  Headings: 1.2
-  Body: 1.6
-  Compact: 1.4
-
-Font-weight:
-  Regular: 400
-  Semibold: 600
-  Bold: 700
+Tracking spéciaux:
+  Labels/badges: tracking-[0.28em] uppercase text-xs/sm
+  Nav items: tracking-[0.02em]
 ```
 
-### 4.3 Spacing (Tailwind Scale)
+### 4.3 Spacing
 
 ```
-unit = 0.25rem (4px)
-
-- p-4 = 1rem (16px)
-- p-6 = 1.5rem (24px)
-- p-8 = 2rem (32px)
-- p-16 = 4rem (64px)
+Max-width containers:
+  Pages: max-w-6xl ou max-w-7xl mx-auto px-4
+  Articles: max-w-7xl mx-auto px-4
 
 Section padding:
-- Mobile: p-4 / py-8
-- Desktop: p-16 / py-20
+  py-16 à py-20 (sections standards)
+  p-8 à p-12 (cards internes)
 ```
 
 ### 4.4 Components
 
-#### Buttons
-```
-Primary CTA:
-  - bg-primary-600 hover:bg-primary-700
-  - text-white
-  - py-3 px-8
-  - rounded-lg
-  - transition-colors
-
-Secondary:
-  - border-2 border-primary-600
-  - text-primary-600
-  - hover:bg-primary-50
+#### Cards (pattern unifié)
+```css
+rounded-[2rem]
+border border-slate-200
+bg-white
+shadow-[0_18px_60px_-35px_rgba(15,23,42,0.45)]
+transition hover:-translate-y-1
+hover:shadow-[0_24px_80px_-38px_rgba(15,23,42,0.45)]
 ```
 
-#### Cards
-```
-Base:
-  - border border-gray-200
-  - rounded-lg
-  - p-6
-  - transition-all
-
-Hover:
-  - border-primary-300 (or primary-500)
-  - shadow-lg
+#### Boutons CTA principaux
+```css
+rounded-full
+bg-brand-600 hover:bg-brand-700
+px-8 py-4 text-sm font-semibold text-white
+shadow-lg shadow-brand-600/20
 ```
 
-#### Navigation
+#### Boutons secondaires (outline sur dark)
+```css
+rounded-full
+border border-white/20 bg-white/5
+hover:bg-white/10 hover:border-white/40
+text-white
 ```
-Desktop: Horizontal menu
-Mobile: Hidden (future: hamburger)
 
-Active state:
-  - text-primary-600
-  - border-b-2 border-primary-600
+#### Hero sections (pages intérieures)
+```css
+bg-slate-950 text-white
+relative overflow-hidden
+px-6 py-16 md:px-12 md:py-20
++ overlay radial-gradient
++ overlay linear-gradient
+```
+
+#### Navigation Header
+```
+Sticky, bg-white/90 backdrop-blur-xl
+Logo: img JB Product Systems (h-24)
+Nav items: text-sm font-medium tracking-[0.02em]
+Active: border-b-2 border-brand-600
+CTA: rounded-full bg-brand-600 "ÉCHANGEONS" → /contact
 ```
 
 ---
 
-## 5. CONTENU REQUIS
+## 5. CONTENU - ÉTAT ACTUEL
 
-### 5.1 À Remplir
+### 5.1 ✅ Complété
 
-**Informations personnelles:**
-- [ ] Email de contact
-- [ ] LinkedIn URL
-- [ ] Twitter/X URL
-- [ ] Photo professionnelle
-- [ ] Bio courte (2-3 phrases)
+**Articles (4 natifs + 6 externes):** ✅  
+**Projets (6 réels):** ✅  
+**Témoignages (11 réels):** ✅  
+**Bio courte (accueil):** ✅  
+**Logo JB Product Systems:** ✅  
 
-**Expériences (Minimum 3):**
-- [ ] Poste actuel: Titre, Entreprise, Dates, Description
-- [ ] Poste N-1: Titre, Entreprise, 20XX-20XX, Description
-- [ ] Autres: Timeline complète
+### 5.2 ⏳ À Compléter
 
-**Compétences:**
-- [ ] Product Management (4-5 items)
-- [ ] Agilité & Leadership (4-5 items)
-- [ ] Digital & Tech (4-5 items)
-- [ ] Autres (3-4 items)
+**Page /about (template):**
+- [ ] Vraies expériences avec dates (timeline)
+- [ ] Vraies compétences listées
+- [ ] Formation/certifications réelles
 
-**Projets (Minimum 4):**
-- [ ] Titre du projet
-- [ ] Description (3-4 phrases)
-- [ ] 2-3 tags chacun
+**Accueil:**
+- [ ] Photo professionnelle (placeholder présent)
 
-**Articles:**
-- [ ] 6 articles avec titre + description + date + lien
-- [ ] Tags pertinents
+**Articles externes:**
+- [ ] Remplacer URLs `blog-entreprise.com` par vraies URLs
 
-**Éducation:**
-- [ ] Minimum 1 école/certification
-- [ ] Dates
+**À créer:**
+- [ ] Page /contact (bouton header pointe déjà vers /contact)
 
 ---
 
@@ -365,26 +370,26 @@ Active state:
 ```
 Framework: Astro 5.x
 Language: TypeScript 5.x
-Styling: Tailwind CSS 3.x
-Components: Astro components (no React by default)
-Graphics: SVG/CSS (no image library)
-Icons: Heroicons (future)
+Styling: Tailwind CSS 3.x + @tailwindcss/typography
+Content: Astro Content Collections (Markdown + Zod schema)
+Components: Astro components (no React)
+Icons: SVG inline (no icon library)
 ```
 
-### 6.2 Build & Deploy
+### 6.2 Data
 ```
-Build tool: Astro CLI
-Output: Static HTML/CSS/JS
-CDN: Netlify or Vercel
-DNS: Custom domain (future)
-SSL: Automatic (Netlify/Vercel)
+Testimonials: src/data/testimonials.ts (TypeScript hardcodé)
+Articles: src/content/blog/*.md (Markdown avec frontmatter)
+Projects: hardcodé dans pages/projects.astro
 ```
 
-### 6.3 Dev Tools
+### 6.3 Build & Deploy
 ```
-Code formatting: Prettier
-Linting: (optional, not configured)
-Git hooks: (optional)
+Build tool: Astro CLI (npm run build)
+Output: Static HTML/CSS/JS dans dist/
+Target CDN: Netlify ou Vercel
+DNS: Custom domain (à configurer)
+SSL: Automatique (Netlify/Vercel)
 ```
 
 ---
@@ -392,41 +397,37 @@ Git hooks: (optional)
 ## 7. CHECKLIST FINALISATION
 
 ### Pre-Launch
-- [ ] Toutes les infos réelles remplies
+- [ ] Page /about avec vraie timeline expériences
 - [ ] Photo professionnelle en place
-- [ ] Liens articles testés
+- [ ] Page /contact créée
+- [ ] Liens articles externes remplacés par vraies URLs
+- [ ] Open Graph meta tags ajoutés (partage réseaux sociaux)
+- [ ] Sitemap (astro/sitemap integration)
 - [ ] Mobile responsive validée
 - [ ] Pas d'erreurs console
-- [ ] Performances acceptables (< 2s)
-- [ ] SEO metadata complété
-- [ ] Testée sur navigateurs principaux
+- [ ] Performances testées (< 2s)
 
 ### Lancement
-- [ ] Domain name acheté (optionnel)
-- [ ] Deployé sur Netlify/Vercel
+- [ ] Domain name acheté
+- [ ] Déployé sur Netlify/Vercel
 - [ ] DNS configuré
 - [ ] Analytics setup (Plausible)
 - [ ] Partage réseau professionnel
 
 ### Post-Launch
-- [ ] Monitoring erreurs (Sentry optionnel)
+- [ ] Monitoring erreurs
 - [ ] Feedback utilisateurs
-- [ ] Mises à jour régulières
+- [ ] Nouveaux articles réguliers
 
 ---
 
 ## 8. CRITÈRES D'ACCEPTATION GLOBAUX
 
-✅ **Accueil:** Visuellement attrayant + Appel à action clair  
-✅ **À Propos:** Crédibilité établie en 2 min de lecture  
-✅ **Projets:** Cas d'usage concrets et impressionnants  
-✅ **Blog:** Facile de trouver les articles pertinents  
+✅ **Accueil:** Visuellement attractif + témoignages en confiance + appel à action clair  
+✅ **Témoignages:** 11 recommandations réelles affichées, triées par pertinence  
+✅ **Projets:** 6 cas d'usage réels et impressionnants  
+✅ **Blog:** Articles natifs accessibles + engine prêt pour nouveaux contenus  
+⏳ **À Propos:** Crédibilité établie en 2 min de lecture (contenu à finaliser)  
+⏳ **Contact:** Page /contact à créer  
 ✅ **Performance:** Chargement rapide (< 1.5s)  
-✅ **Mobile:** Parfait sur téléphone  
-✅ **Contact:** Email/LinkedIn clairs et accessibles  
-
----
-
-**Doc Specifications créée le**: 28 avril 2026  
-**Version initiale**: 1.0.0  
-**Status à déploiement**: À remplir les infos réelles
+✅ **Mobile:** Responsive sur téléphone  

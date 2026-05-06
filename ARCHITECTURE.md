@@ -1,5 +1,8 @@
 # 🏗️ ARCHITECTURE - JB Blog
 
+**Last Updated**: 6 mai 2026  
+**Architect**: Julien Bechkri
+
 ## Vue d'ensemble système
 
 ```
@@ -12,7 +15,8 @@
 │              ASTRO BUILD (Static Site Generator)             │
 │  ┌───────────────────────────────────────────────────────┐  │
 │  │ • Compilation des .astro files                        │  │
-│  │ • Intégration Tailwind CSS                            │  │
+│  │ • Astro Content Collections (blog Markdown)           │  │
+│  │ • Intégration Tailwind CSS + @tailwindcss/typography  │  │
 │  │ • TypeScript processing                               │  │
 │  │ • Génération pages statiques (.html)                  │  │
 │  └───────────────────────────────────────────────────────┘  │
@@ -34,6 +38,8 @@
         │ • about/index.html               │
         │ • projects/index.html            │
         │ • blog/index.html                │
+        │ • blog/[slug]/index.html         │
+        │ • testimonials/index.html        │
         │ • _astro/* (CSS/JS minifiés)    │
         └──────────┬──────────────────────┘
                    │
@@ -54,6 +60,11 @@
 ```
 Source Files (src/)
     │
+    ├─→ Astro Content Collections
+    │   ├─ Parse src/content/blog/*.md
+    │   ├─ Valide contre schema (config.ts)
+    │   └─ Génère routes /blog/[slug]
+    │
     ├─→ Astro Compiler
     │   ├─ Parse .astro files
     │   ├─ Process TypeScript
@@ -61,12 +72,11 @@ Source Files (src/)
     │
     ├─→ Tailwind CSS Processor
     │   ├─ Scan components
-    │   ├─ Generate CSS
+    │   ├─ Generate CSS (utility + typography plugin)
     │   └─ Minify
     │
     └─→ Asset Pipeline
-        ├─ Optimize images
-        ├─ Bundle JS/CSS
+        ├─ Copy public/ to dist/
         └─ Generate HTML
 
     ▼
@@ -85,84 +95,129 @@ User Request → CDN → fetch .html → Browser renders → ✅ Visible instant
 ## Structure des Fichiers Détaillée
 
 ### `src/layouts/`
-**Responsabilité**: Fournir les **wrappers HTML** réutilisables
+
+```
+BaseLayout.astro  → Wrapper HTML universel (Header + Footer + <slot>)
+BlogLayout.astro  → Layout alternatif pour articles (non utilisé activement)
+```
 
 ```astro
 {/* BaseLayout.astro */}
 <!DOCTYPE html>
-<html>
-  <head>...</head>
-  <body>
+<html lang="fr">
+  <head>
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" href="/favicon.svg" />
+  </head>
+  <body class="flex flex-col min-h-screen">
     <Header />
-    <main>
-      {/* Le contenu des pages s'injecte ici via slot */}
-      <slot />
-    </main>
+    <main class="flex-1"><slot /></main>
     <Footer />
   </body>
 </html>
 ```
 
-**Utilisation:**
-```astro
----
-import BaseLayout from '../layouts/BaseLayout.astro';
----
-
-<BaseLayout title="Ma Page">
-  {/* Contenu spécifique à la page */}
-</BaseLayout>
-```
-
 ### `src/components/`
-**Responsabilité**: Composants **reutilisables** (Header, Footer, Cards, etc.)
 
-**Hiérarchie:**
 ```
-Header.astro (navigation, branding)
-  └─ contient les liens vers les pages
+Header.astro          → Navigation sticky, logo JB Product Systems, CTA "ÉCHANGEONS"
+Footer.astro          → Contact, liens, copyright
+Hero.astro            → Section hero dark slate-950, 2 colonnes, 3 piliers
+ArticleCard.astro     → Card article avec gradient cover coloré (auto-généré depuis titre)
+ProjectCard.astro     → Card projet avec bordure top gradient
+TestimonialCard.astro → Card témoignage, variante featured ou standard
+```
 
-ArticleCard.astro (affiche 1 article)
-  └─ réutilisé sur: index.astro, blog.astro
+**Hiérarchie d'utilisation:**
+```
+index.astro
+  ├─ Hero (dark, STRUCTURE/DECIDE/DELIVER)
+  ├─ ArticleCard ×3 (featured articles)
+  ├─ ProjectCard ×2 (featured projects)
+  └─ TestimonialCard ×3 (featured testimonials)
 
-ProjectCard.astro (affiche 1 projet)
-  └─ réutilisé sur: index.astro, projects.astro
+blog.astro
+  └─ ArticleCard ×N (natifs via Content Collections + liens externes)
 
-Footer.astro (contact, liens, copyright)
-  └─ apparaît sur toutes les pages
+blog/[slug].astro
+  └─ <Content /> (article Markdown rendu avec prose classes)
+  └─ TOC sidebar (headings extraits du HTML)
+
+projects.astro
+  └─ ProjectCard ×6
+
+testimonials.astro
+  └─ TestimonialCard ×4 (featured) + ×7 (autres)
 ```
 
 ### `src/pages/`
-**Dynamique**: 1 fichier `.astro` = 1 route HTTP
 
 ```
-pages/
-├─ index.astro      → http://localhost:4321/
-├─ about.astro      → http://localhost:4321/about
-├─ projects.astro   → http://localhost:4321/projects
-├─ blog.astro       → http://localhost:4321/blog
-└─ 404.astro        → http://localhost:4321/404 (pour routes inconnues)
+index.astro           → /
+about.astro           → /about
+projects.astro        → /projects
+blog.astro            → /blog
+blog/[slug].astro     → /blog/:slug  (route dynamique SSG)
+testimonials.astro    → /testimonials
+404.astro             → /404
 ```
 
-**Astro file routing conventions:**
-- `pages/index.astro` → `/`
-- `pages/about.astro` → `/about`
-- `pages/blog/index.astro` → `/blog`
-- `pages/blog/[...slug].astro` → `/blog/my-article` (dynamic)
+### `src/content/`
+
+```
+config.ts             → Définit la collection "blog" avec schéma Zod
+blog/
+  ├─ etablir-une-roadmap-produit-en-10-etapes.md
+  ├─ quest-ce-quun-mvp-definition-et-principes-cles.md
+  ├─ roles-et-interactions-dans-une-organisation-produit.md
+  └─ product-management-ia-strategie.md
+```
+
+**Schéma article (config.ts):**
+```typescript
+z.object({
+  title: z.string(),
+  description: z.string(),
+  pubDate: z.date(),
+  updatedDate: z.date().optional(),
+  heroImage: z.string().optional(),
+  tags: z.array(z.string()),
+  draft: z.boolean().default(false),
+})
+```
+
+### `src/data/`
+
+```
+testimonials.ts  → 11 témoignages réels (interface Testimonial, tableau exporté)
+```
+
+**Interface:**
+```typescript
+interface Testimonial {
+  name: string;
+  title: string;
+  company: string;
+  text: string;
+  date?: string;
+  featured?: boolean;  // true = affiché en page d'accueil + section "Recommandations Principales"
+}
+```
 
 ### `src/styles/`
-**CSS global** pour tout le site
 
-```css
-/* global.css */
-@tailwind base;        /* Reset CSS Tailwind */
-@tailwind components;  /* Composants Tailwind pr-définis */
-@tailwind utilities;   /* Classes utilitaires (p-, m-, etc.) */
+```
+global.css  → @tailwind base/components/utilities + custom overrides
+```
 
-/* Custom styles */
-body { font-smoothing... }
-a { custom link styles... }
-code { custom code block styles... }
+### `public/`
+
+```
+favicon.svg
+favicon-32x32.png
+images/
+  └─ JB_PRODUCT_SYSTEMS_transparent.png   (logo header)
 ```
 
 ---
@@ -172,144 +227,113 @@ code { custom code block styles... }
 ### Page → Component Props
 
 ```
-index.astro (parent)
-    │
-    ├─→ <Hero 
-    │       title="Julien Bechkri"
-    │       subtitle="Product Manager"
-    │       cta={{ text: "Découvrir", href: "#featured" }}
-    │   />
-    │
-    ├─→ <ArticleCard 
-    │       title="Les 5 principes..."
-    │       date="2026-04-15"
-    │       tags={["Agilité", "Management"]}
-    │   />
-    │
-    └─→ <ProjectCard 
-            title="Refonte Produit"
-            description="..."
-            tags={["Product", "Transformation"]}
-        />
+index.astro
+    ├─→ <Hero title="..." subtitle="..." ctaPrimary={} ctaSecondary={} />
+    ├─→ <TestimonialCard testimonial={t} featured={true} />
+    ├─→ <ArticleCard title="..." date="..." tags={[]} external={true} url="..." />
+    └─→ <ProjectCard title="..." description="..." tags={[]} />
 
-Hero, ArticleCard, ProjectCard (children)
-    │
-    └─→ Interface Props{} déclarée en frontmatter
-            ├─ title: string
-            ├─ subtitle?: string
-            └─ cta?: CTA object
+blog/[slug].astro
+    └─→ <Content />    (composant Astro généré par Content Collections)
 ```
 
-### Props Flow Pattern
+### Props Flow - ArticleCard
 
 ```astro
-{/* ArticleCard.astro */}
----
 interface Props {
   title: string;
   description: string;
   date: string;
+  slug?: string;          // pour articles natifs
   tags?: string[];
-  external?: boolean;
-  url?: string;
+  external?: boolean;     // ouvre dans _blank
+  url?: string;           // URL externe OU générée depuis slug
+  category?: string;      // badge visible dans le cover
+  eyecatchImage?: string; // image custom si fournie
 }
+```
 
-const { title, description, date, tags = [], external = false, url } = Astro.props;
----
-
-<article>
-  <h3>{title}</h3>
-  <p>{description}</p>
-  {tags.map(tag => <span>{tag}</span>)}
-</article>
+Le gradient du cover est **auto-généré** depuis un hash du titre :
+```typescript
+const seed = Math.abs(hashCode(title));
+const palette = palettes[seed % palettes.length]; // 6 palettes disponibles
 ```
 
 ---
 
 ## Tailwind CSS Architecture
 
-### Utility Classes
+### Design System réel (tailwind.config.cjs)
 
-**Les 3 couches de Tailwind dans notre projet:**
-
-```css
-@tailwind base;      /* Normalization CSS */
-  ↓
-  Reset HTML, définit des defaults
-
-@tailwind components;
-  ↓
-  Classes pré-built: mx-auto, container, etc.
-
-@tailwind utilities;
-  ↓
-  Classes générées: p-4, m-8, text-xl, bg-blue-500, etc.
+```
+brand    → Bleu principal (#2563eb / #1d4ed8)
+neutral  → Tons slate (#94a3b8 → #0f172a)
+accent   → Cyan (#38bdf8 / #0ea5e9)
+highlight → Vert (#22c55e / #16a34a)
 ```
 
-### Exemple d'utilisation
+### Patterns visuels récurrents
+
+```
+Cards:
+  rounded-[2rem]
+  border border-slate-200
+  shadow-[0_18px_60px_-35px_rgba(15,23,42,0.45)]
+  hover:-translate-y-1
+  hover:shadow-[0_24px_80px_-38px_...]
+
+Hero sections (pages):
+  bg-slate-950 text-white
+  radial-gradient overlays
+  linear-gradient(180deg, rgba(15,23,42,0.95), ...)
+
+Boutons CTA:
+  rounded-full
+  bg-brand-600 hover:bg-brand-700
+  shadow-lg shadow-brand-600/20
+
+Badges/pills:
+  rounded-full
+  bg-white/90 (sur dark) ou bg-slate-100 (sur light)
+  text-[11px] uppercase tracking-[0.28em]
+```
+
+---
+
+## Astro Content Collections
+
+### Fonctionnement
+
+```
+1. src/content/config.ts  → définit schéma Zod de la collection "blog"
+2. src/content/blog/*.md  → articles avec frontmatter validé
+3. blog.astro             → getCollection('blog') → liste triée par date
+4. blog/[slug].astro      → getStaticPaths() + entry.render() → HTML
+```
+
+### Route dynamique `/blog/[slug]`
 
 ```astro
-{/* Before Tailwind */}
-<div style="padding: 1rem; display: flex; justify-content: center; background: blue; color: white;">
-  Hello
-</div>
-
-{/* After Tailwind */}
-<div class="p-4 flex justify-center bg-blue-500 text-white">
-  Hello
-</div>
-```
-
-**Config personnalisée (tailwind.config.cjs):**
-```js
-theme: {
-  colors: {
-    primary: { 500: '#0ea5e9', 600: '#0284c7' },  // Custom colors
-    accent: { 500: '#f97316' }
-  },
-  fontFamily: {
-    sans: ['Inter', 'system-ui', 'sans-serif']    // Custom fonts
-  }
+export async function getStaticPaths() {
+  const blogEntries = await getCollection('blog');
+  return blogEntries.map(entry => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
 }
 ```
 
----
-
-## TypeScript Integration
-
-### Type Safety en Astro
-
-```astro
----
-// Props avec types stricts
-interface Props {
-  title: string;
-  date: string;
-  tags?: string[];  // Optional
-}
-
-const { title, date, tags = [] } = Astro.props;
-// TypeScript erreur si tu passes "title: 123" (pas string)
----
-```
-
-### Astro.props vs React Props
-
-```
-Astro (Server-side):
-  Props → compilées à la build
-  Pas de client-side reactivity par défaut
-  Parfait pour pages statiques
-
-React (dans Astro - optional):
-  Props + State
-  Client-side interactive
-  Plus lourd, à utiliser sparingly
-```
+**Features de la page article:**
+- Layout 4 colonnes (1 sidebar + 3 contenu)
+- TOC (table of contents) collé en sticky, headings extraits via JS
+- Author card dans sidebar (nom, titre, bio courte)
+- `@tailwindcss/typography` (classe `prose`) pour le rendu du Markdown
+- Boutons partage Twitter/LinkedIn (non fonctionnels, UI seulement)
+- Active highlighting du TOC via IntersectionObserver
 
 ---
 
-## Static Site Generation (SSG) vs SSR
+## Static Site Generation (SSG)
 
 ### Notre approche: SSG 100%
 
@@ -317,15 +341,11 @@ React (dans Astro - optional):
 Why SSG?
 ✅ Très rapide (zéro serveur)
 ✅ Parfait pour blogs/vitrines
-✅ Sécurisé (pas serveur à hacker)
+✅ Sécurisé (pas de serveur à attaquer)
 ✅ Facile à déployer (CDN global)
 ✅ SEO-friendly
-✅ Pas de base de données nécessaire
-
-Build once → Deploy everywhere
+✅ Pas de base de données
 ```
-
-**Comparaison:**
 
 | Aspect | SSG (Notre approche) | SSR | CMS Dynamique |
 |--------|----------------------|-----|---------------|
@@ -333,7 +353,6 @@ Build once → Deploy everywhere
 | Perfs | Très rapide | Moyen | Lent |
 | Coût | Cheap (CDN static) | Moyen (serveur) | Cher |
 | SEO | Parfait | Bon | Bon |
-| Flexibilité | Basse (re-build) | Haute | Très haute |
 | Articles | Markdown files | DB | CMS Dashboard |
 
 ---
@@ -343,25 +362,25 @@ Build once → Deploy everywhere
 ### Current
 - ✅ Static HTML (instant load)
 - ✅ Tailwind purged CSS (small bundle)
-- ✅ Minimal JavaScript
-- ✅ Image optimization (with Astro)
+- ✅ Minimal JavaScript (seulement IntersectionObserver sur pages article)
+- ✅ Images optimisées (public/)
 
 ### Future (if needed)
-- [ ] Image lazy-loading
-- [ ] Code splitting
+- [ ] Image lazy-loading (astro:assets)
+- [ ] Open Graph images automatiques
 - [ ] Service Worker (offline mode)
-- [ ] WebP format support
+- [ ] Sitemap automatique (astro/sitemap)
 
 ---
 
 ## Deployment Architecture
 
-### Option 1: Netlify (Recommandée)
+### Option recommandée : Netlify
 
 ```
 GitHub Repo → Push Code
     ↓
-→ Netlify detects (netlify.toml)
+→ Netlify detects push
     ↓
 → `npm run build`
     ↓
@@ -370,36 +389,22 @@ GitHub Repo → Push Code
 → Live 🎉
 ```
 
-### Option 2: Vercel
-
-```
-Same flow, slightly different UI
-```
-
 ---
 
 ## Extension Points
 
-### Pour ajouter une fonctionnalité
-
+### Ajouter un article natif
 ```
-1. Ajouter fichier dans src/components/
-2. Importer dans src/pages/
-3. Passer les props nécessaires
-4. Définir l'interface Props<>
-5. npm run dev pour tester
-6. Commit & deploy
+1. Créer src/content/blog/mon-article.md
+2. Ajouter frontmatter (title, description, pubDate, tags)
+3. Écrire le contenu en Markdown
+4. `npm run dev` → visible sur /blog et /blog/mon-article
 ```
 
-**Exemple: Ajouter une newsletter**
+### Ajouter une fonctionnalité (composant)
 ```
-1. Créer NewsletterForm.astro
-2. Ajouter dans Footer.astro
-3. Connecter Formspree ou Mailchimp
-4. Test → Deploy
+1. Créer src/components/MonComposant.astro
+2. Définir interface Props
+3. Importer dans la page concernée
+4. Passer les props
 ```
-
----
-
-**Last Updated**: 28 avril 2026  
-**Architect**: Claude Copilot

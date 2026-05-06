@@ -1,7 +1,8 @@
 # 📚 JB Blog - Documentation Complète
 
-**Version** : 1.0.0  
+**Version** : 2.0.0  
 **Date de création** : 28 avril 2026  
+**Dernière mise à jour** : 6 mai 2026  
 **Statut** : 🟢 En développement actif  
 
 ---
@@ -9,7 +10,7 @@
 ## 🎯 Vue d'ensemble du projet
 
 ### Objectif
-Créer une plateforme de blog/vitrine professionnelle pour **Julien Bechkri** - Product Manager & Expert en Transformation Digitale.
+Créer une plateforme de blog/vitrine professionnelle pour **Julien Bechkri** - Product Manager & Expert en Transformation Digitale, opérant sous la marque **JB Product Systems**.
 
 **Public cible** :
 - Recruteurs / Responsables RH
@@ -30,10 +31,10 @@ Créer une plateforme de blog/vitrine professionnelle pour **Julien Bechkri** - 
 ### Stack Technologique
 ```
 Frontend: Astro (Static Site Generator)
-Styling: Tailwind CSS + Custom CSS
+Styling: Tailwind CSS + Custom CSS + @tailwindcss/typography
 Language: TypeScript
 Hosting: Netlify / Vercel (à configurer)
-CMS: Markdown-based (pas de CMS externe)
+CMS: Astro Content Collections (Markdown natif)
 ```
 
 ### Structure Hiérarchique
@@ -44,31 +45,41 @@ jb-blog/
 │   ├── package.json          # Dépendances npm
 │   ├── astro.config.mjs      # Configuration Astro
 │   ├── tsconfig.json         # TypeScript config
-│   ├── tailwind.config.cjs   # Tailwind config
+│   ├── tailwind.config.cjs   # Tailwind config (couleurs brand/neutral/accent)
 │   └── .gitignore            # Git exclusions
 │
 ├── 📁 src/
 │   ├── layouts/              # Templates réutilisables
-│   │   ├── BaseLayout.astro  # Layout principal
-│   │   └── BlogLayout.astro  # Pour articles futurs
+│   │   ├── BaseLayout.astro  # Layout principal (Header + Footer + slot)
+│   │   └── BlogLayout.astro  # Layout dédié aux articles
 │   │
 │   ├── components/           # Composants Astro
-│   │   ├── Header.astro      # Navigation
+│   │   ├── Header.astro      # Navigation sticky avec logo JB Product Systems
 │   │   ├── Footer.astro      # Footer
-│   │   ├── Hero.astro        # Section hero
-│   │   ├── ArticleCard.astro # Card article
-│   │   └── ProjectCard.astro # Card projet
+│   │   ├── Hero.astro        # Section hero dark (slate-950, glassmorphism)
+│   │   ├── ArticleCard.astro # Card article avec gradient cover coloré
+│   │   ├── ProjectCard.astro # Card projet avec bordure gradient top
+│   │   └── TestimonialCard.astro # Card témoignage (featured/normal)
+│   │
+│   ├── data/
+│   │   └── testimonials.ts   # 11 témoignages réels (LinkedIn)
 │   │
 │   ├── pages/                # Routes du site (SSG)
-│   │   ├── index.astro       # /
+│   │   ├── index.astro       # / (Hero + About + Témoignages + Articles + Projets)
 │   │   ├── about.astro       # /about
-│   │   ├── projects.astro    # /projects
-│   │   ├── blog.astro        # /blog
+│   │   ├── projects.astro    # /projects (6 projets réels)
+│   │   ├── blog.astro        # /blog (articles natifs + liens externes)
+│   │   ├── blog/[slug].astro # /blog/:slug (page article individuel)
+│   │   ├── testimonials.astro # /testimonials (page complète témoignages)
 │   │   └── 404.astro         # /404
 │   │
-│   ├── content/              # Futur: Articles en Markdown
-│   │   ├── blog/             # Articles de blog
-│   │   └── projects/         # Descriptions de projets
+│   ├── content/              # Articles en Markdown (Astro Content Collections)
+│   │   ├── config.ts         # Schéma de la collection blog
+│   │   └── blog/
+│   │       ├── etablir-une-roadmap-produit-en-10-etapes.md
+│   │       ├── quest-ce-quun-mvp-definition-et-principes-cles.md
+│   │       ├── roles-et-interactions-dans-une-organisation-produit.md
+│   │       └── product-management-ia-strategie.md
 │   │
 │   ├── styles/
 │   │   └── global.css        # Styles globaux + Tailwind
@@ -76,8 +87,10 @@ jb-blog/
 │   └── utils/                # Utilitaires (vide pour l'instant)
 │
 ├── 📁 public/                # Assets statiques
-│   ├── images/               # Images (logo, photos, etc.)
-│   └── icons/                # Icônes
+│   ├── favicon.svg           # Favicon principal
+│   ├── favicon-32x32.png     # Favicon fallback
+│   └── images/
+│       └── JB_PRODUCT_SYSTEMS_transparent.png  # Logo header
 │
 └── 📁 dist/                  # Build outputs (généré)
 ```
@@ -90,10 +103,12 @@ jb-blog/
 
 | Route | Fichier | Contenu | Status |
 |-------|---------|---------|--------|
-| `/` | `index.astro` | Accueil (Hero + Featured + CTA) | ✅ OK |
-| `/about` | `about.astro` | Bio + Expériences + Compétences | ✅ OK |
-| `/projects` | `projects.astro` | Grille 6 projets | ✅ OK |
-| `/blog` | `blog.astro` | Listes articles (liens externes) | ✅ OK |
+| `/` | `index.astro` | Hero + About + Témoignages featured + Articles + Projets | ✅ OK |
+| `/about` | `about.astro` | Bio + Expériences + Compétences | ⏳ Contenu à finaliser |
+| `/projects` | `projects.astro` | 6 projets réels (Babilou, Alten, Carac...) | ✅ OK |
+| `/blog` | `blog.astro` | Articles natifs (Content Collections) + liens externes | ✅ OK |
+| `/blog/:slug` | `blog/[slug].astro` | Article individuel avec TOC + sidebar auteur | ✅ OK |
+| `/testimonials` | `testimonials.astro` | 11 témoignages réels (featured + autres) | ✅ OK |
 | `/404` | `404.astro` | Page erreur | ✅ OK |
 
 ### Composants
@@ -102,36 +117,65 @@ jb-blog/
 |-----------|---------|-----------------|--------|
 | Header/Nav | `Header.astro` | Tous les layouts | ✅ OK |
 | Footer | `Footer.astro` | Tous les layouts | ✅ OK |
-| Hero | `Hero.astro` | Pages principales | ✅ OK |
+| Hero | `Hero.astro` | Page accueil | ✅ OK |
 | ArticleCard | `ArticleCard.astro` | Blog & Accueil | ✅ OK |
 | ProjectCard | `ProjectCard.astro` | Projects & Accueil | ✅ OK |
+| TestimonialCard | `TestimonialCard.astro` | Accueil & /testimonials | ✅ OK |
 
 ### Design System
 
-**Couleurs**
+**Couleurs (tailwind.config.cjs)**
 ```css
-Primary (Confiance): #0ea5e9 (Bleu ciel)
-Primary Dark: #0284c7
-Accent (Énergie): #f97316 (Orange)
-Dark (Texte): #1f2937
-Light (BG): #f9fafb
+brand:   50:#eef3ff  500:#2563eb  600:#1d4ed8  700:#1e40af  900:#0f172a
+neutral: 50:#f8fafc  400:#94a3b8  500:#64748b  700:#334155  900:#0f172a
+accent:  50:#f0f9ff  500:#38bdf8  600:#0ea5e9  700:#0284c7
+highlight: 500:#22c55e  600:#16a34a
 ```
 
 **Typography**
 ```
-Font-stack: Inter (sans-serif)
-H1: 3rem / 4rem (desktop)
-H2: 2rem / 3rem
-H3: 1.5rem / 2rem
-Body: 1rem, line-height: 1.5
+Font-stack: Inter (sans-serif) / Georgia (serif pour articles)
+H1: 4xl→6xl (responsive)
+H2: 3xl
+Body: 1rem, leading-relaxed
+Plugin: @tailwindcss/typography (prose classes pour articles)
 ```
 
-**Spacing (Tailwind)**
+**Esthétique générale**
 ```
-Padding: p-4 (mobile), p-16 (desktop)
-Gaps: gap-4 à gap-12
-Max-width: max-w-6xl
+Cards: rounded-[2rem], shadow-[0_18px_60px_-35px_rgba(15,23,42,0.45)]
+Hero: bg-slate-950, glassmorphism blobs (blur-3xl, animation float)
+Sections hero pages: dark bg-slate-950 + gradient radial
+Boutons: rounded-full, style pill
 ```
+
+---
+
+## 📊 Contenu Actuel
+
+### Accueil (`/`)
+- ✅ Hero section dark avec 3 piliers (STRUCTURE / DECIDE / DELIVER)
+- ✅ Section "À Propos" (court, 2 paragraphes réels)
+- ✅ 3 Témoignages featured (vrais témoignages LinkedIn)
+- ✅ 3 Articles featured (liens externes pour l'instant)
+- ✅ 2 Projets featured
+- ✅ CTA "Réserver un échange"
+
+### À Propos (`/about`)
+- ⏳ Contenu template — à remplir avec vraies expériences, dates, descriptions
+
+### Projets (`/projects`)
+- ✅ 6 projets réels (Babilou, Alten, Carac/Generali/Eres, Chanel/Randstad, Babilou Qualité, Data Strategy)
+
+### Blog (`/blog`)
+- ✅ 4 articles natifs en Markdown (Content Collections)
+- ✅ 6 articles externes (liens vers blog-entreprise.com — placeholder)
+- ✅ Route `/blog/[slug]` avec sidebar TOC + auteur card
+
+### Témoignages (`/testimonials`)
+- ✅ 11 témoignages réels issus de LinkedIn
+- ✅ 4 featured, 7 autres
+- ✅ Stats (nombre témoignages, années expérience, projets livrés, entreprises)
 
 ---
 
@@ -139,9 +183,9 @@ Max-width: max-w-6xl
 
 ### Nouveau Visiteur
 ```
-Landing (Hero) 
+Landing (Hero)
   ↓
-  → Clique "Découvrir" 
+  → Clique "DÉCOUVRIR MON EXPERTISE"
   ↓
 À Propos (read 2-3 min)
   ↓
@@ -149,12 +193,14 @@ Landing (Hero)
   ↓
 Projets / Blog
   ↓
-  → Intéressé? Scroll footer "Contact"
+  → Intéressé? Footer "Contact"
 ```
 
 ### Recruteur/Consultant
 ```
-Accueil (overview rapide)
+Accueil (overview rapide + témoignages)
+  ↓
+Témoignages (crédibilité)
   ↓
 À Propos (détails expérience)
   ↓
@@ -162,32 +208,6 @@ Projets (cas d'usage concrets)
   ↓
 Contact (email/LinkedIn)
 ```
-
----
-
-## 📊 Contenu Actuel
-
-### Accueil
-- ✅ Hero section
-- ✅ Section "À Propos" (short)
-- ✅ 3 Articles featured
-- ✅ 2 Projets featured
-- ✅ CTA "Prenons contact"
-
-### À Propos
-- ✅ Bio (10+ ans d'expérience)
-- ✅ 3 postes de travail (templates)
-- ✅ 4 catégories de compétences
-- ⏳ À remplir: Vraies expériences, dates, descriptions
-
-### Projets
-- ✅ 6 projets templates
-- ⏳ À remplir: Descriptions réelles
-
-### Blog
-- ✅ 6 articles templates
-- ✅ Liens vers articles externes
-- ⏳ Futur: Articles en Markdown natifs
 
 ---
 
@@ -199,19 +219,28 @@ Contact (email/LinkedIn)
 - [x] BaseLayout + Components
 - [x] 5 Pages principales
 - [x] Design system Tailwind
-- [x] Dev server fonctionnel ✅
+- [x] Dev server fonctionnel
 
-### Phase 2 : ⏳ EN COURS
-- [ ] Remplir infos réelles (expériences, compétences)
-- [ ] Ajouter photo professionnelle
-- [ ] Actualiser projets avec descriptions réelles
-- [ ] Liens articles réels
+### Phase 2 : ✅ LARGEMENT AVANCÉE
+- [x] Refonte design system (brand colors, dark hero, glassmorphism)
+- [x] Blog engine natif (Astro Content Collections)
+- [x] 4 articles Markdown natifs publiés
+- [x] Route dynamique `/blog/[slug]` avec TOC + sidebar
+- [x] Composant TestimonialCard + page /testimonials
+- [x] 11 témoignages réels intégrés
+- [x] 6 projets réels (Babilou, Alten, Carac...)
+- [x] Logo JB Product Systems dans le header
+- [x] Favicon + images publiques
+- [ ] Page `/about` — vraies expériences, dates, descriptions à remplir
+- [ ] Photo professionnelle (placeholder encore présent)
+- [ ] Articles externes : remplacer URLs placeholder par vraies URLs
 
 ### Phase 3 : À FAIRE
-- [ ] Contact form (optionnel: Formspree/Netlify)
-- [ ] Blog articles natifs (Markdown)
-- [ ] Optimisation SEO (metadata, sitemap)
+- [ ] Contact form (Formspree / Netlify Forms)
+- [ ] Page `/contact` dédiée (bouton "ÉCHANGEONS" dans header pointe déjà vers /contact)
+- [ ] Optimisation SEO (sitemap, Open Graph, meta tags complets)
 - [ ] Analytics (Plausible)
+- [ ] Témoignages : lien vers profil LinkedIn de chaque auteur
 
 ### Phase 4 : Déploiement
 - [ ] Netlify/Vercel setup
@@ -236,34 +265,30 @@ npm update           # Mettre à jour les packages
 
 ---
 
-## 📝 Notes pour Futures Implémentations
+## 📝 Schéma Article (Content Collections)
 
-### Articles en Markdown
-Si on veut ajouter des articles natifs :
-```
-src/content/blog/
-  ├── mon-premier-article.md
-  └── transformation-produit.md
-```
-
-**Front Matter template:**
+**Front Matter requis** (`src/content/blog/mon-article.md`):
 ```yaml
 ---
 title: "Titre de l'article"
-description: "Meta description"
-date: "2026-04-28"
+description: "Meta description (160 chars max)"
+pubDate: 2026-05-06
 tags: ["Product", "Agilité"]
+draft: false
+# heroImage: "/images/mon-image.jpg"  # optionnel
 ---
 ```
 
-### Contact Form
-Options recommandées :
-1. **Formspree** (simple, free tier)
-2. **Netlify Forms** (si on deploy sur Netlify)
-3. **EmailJS** (client-side, anonymous)
-
-### Analytics
-**Recommandation**: Plausible Analytics (privacy-friendly, GDPR compliant)
+**Champs du schéma** (`src/content/config.ts`):
+| Champ | Type | Requis | Note |
+|-------|------|--------|------|
+| title | string | ✅ | |
+| description | string | ✅ | |
+| pubDate | date | ✅ | |
+| updatedDate | date | ❌ | optionnel |
+| heroImage | string | ❌ | URL image |
+| tags | string[] | ✅ | |
+| draft | boolean | ❌ | false par défaut |
 
 ---
 
@@ -273,10 +298,10 @@ Options recommandées :
 - Page ne charge pas? → `npm run dev` + vérifier port 4321
 - Build échoue? → `npm install`, `npm audit fix`
 - Changements pas visibles? → Clear cache browser (Cmd+Shift+R)
+- Article n'apparaît pas? → Vérifier le frontmatter (pubDate au format YYYY-MM-DD)
 
-**Next review**: Après Phase 2 (contenu actualisé)
+**Next review**: Après finalisation page /about + page /contact
 
 ---
 
-**Dernière mise à jour**: 28 avril 2026  
 **Maintenu par**: Julien Bechkri
