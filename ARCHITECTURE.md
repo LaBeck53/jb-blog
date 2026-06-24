@@ -1,6 +1,6 @@
 # 🏗️ ARCHITECTURE - JB Blog
 
-**Last Updated**: 6 mai 2026  
+**Last Updated**: 24 juin 2026  
 **Architect**: Julien Bechkri
 
 ## Vue d'ensemble système
@@ -16,7 +16,8 @@
 │  ┌───────────────────────────────────────────────────────┐  │
 │  │ • Compilation des .astro files                        │  │
 │  │ • Astro Content Collections (blog Markdown)           │  │
-│  │ • Intégration Tailwind CSS + @tailwindcss/typography  │  │
+│  │ • Intégration Tailwind CSS + @tailwindcss/typography  │
+  │ • (React retiré — non utilisé dans le projet)         │  │
 │  │ • TypeScript processing                               │  │
 │  │ • Génération pages statiques (.html)                  │  │
 │  └───────────────────────────────────────────────────────┘  │
@@ -122,7 +123,7 @@ BlogLayout.astro  → Layout alternatif pour articles (non utilisé activement)
 
 ```
 Header.astro          → Navigation sticky, logo JB Product Systems, CTA "ÉCHANGEONS"
-Footer.astro          → Contact, liens, copyright
+Footer.astro          → Contact, liens, copyright, logo h-32, email via bouton JS (adresse masquée au survol)
 Hero.astro            → Section hero dark slate-950, 2 colonnes, 3 piliers
 ArticleCard.astro     → Card article avec gradient cover coloré (auto-généré depuis titre)
 ProjectCard.astro     → Card projet avec bordure top gradient
@@ -133,8 +134,11 @@ TestimonialCard.astro → Card témoignage, variante featured ou standard
 ```
 index.astro
   ├─ Hero (dark, STRUCTURE/DECIDE/DELIVER)
-  ├─ ArticleCard ×3 (featured articles)
+  ├─ Section "À Propos" (texte + CTA)
+  ├─ Section "Ce qui fait ma singularité" (4 cartes valeurs brand/slate)
   ├─ ProjectCard ×2 (featured projects)
+  ├─ ArticleCard ×3 (featured articles)
+  ├─ Section Formations (aperçu 4 thèmes)
   └─ TestimonialCard ×3 (featured testimonials)
 
 blog.astro
@@ -160,6 +164,8 @@ projects.astro        → /projects
 blog.astro            → /blog
 blog/[slug].astro     → /blog/:slug  (route dynamique SSG)
 testimonials.astro    → /testimonials
+formations.astro      → /formations
+mentions-legales.astro → /mentions-legales
 404.astro             → /404
 ```
 
