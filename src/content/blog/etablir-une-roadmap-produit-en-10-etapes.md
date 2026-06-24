@@ -3,6 +3,7 @@ title: "Établir une roadmap produit en 10 étapes"
 description: "Adoptez la roadmap produit est un moyen très efficace de matérialiser vos priorités et suivre un plan d'action de façon pragmatique et évolutive. Découvrez dans cet article ce qu'est une roadmap produit et comment la construire en 10 étapes itératives."
 pubDate: 2022-01-24
 updatedDate: 2022-01-24
+heroImage: "/images/illustrations/roadmap-produit.svg"
 tags: ["Product Management", "Roadmap", "Stratégie", "Méthodologie"]
 draft: false
 ---

@@ -3,6 +3,7 @@ title: "Qu'est-ce qu'un MVP ? Définition et principes clés"
 description: "Découvrez le MVP (Minimum Viable Product), une stratégie essentielle pour tester rapidement la viabilité d'un produit avec des fonctionnalités clés, tout en minimisant les coûts et les risques, pour maximiser les chances de succès sur le marché."
 pubDate: 2024-10-07
 updatedDate: 2024-10-07
+heroImage: "/images/illustrations/mvp-definition.svg"
 tags: ["Product Management", "MVP", "Innovation", "Stratégie"]
 draft: false
 ---
@@ -85,8 +86,3 @@ Pour réussir le développement d'un MVP, vous aurez besoin d'une équipe compé
 
 N'oubliez pas de planifier minutieusement votre budget pour couvrir les outils, le personnel et les coûts de test.
 
-## Digilityx vous accompagne
-
-Chez Digilityx, nous excellons dans la transformation de vos idées en MVP impactants et fonctionnels. Notre équipe d'experts vous guidera à chaque étape pour concrétiser votre vision.
-
-Contactez-nous aujourd'hui pour discuter de votre projet et lancer votre produit minimum viable avec succès.

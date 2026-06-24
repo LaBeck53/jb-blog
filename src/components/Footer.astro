@@ -2,58 +2,142 @@
 const currentYear = new Date().getFullYear();
 ---
 
-<footer class="bg-gray-900 text-gray-100 mt-20">
-  <div class="max-w-6xl mx-auto px-4 py-16">
-    <!-- Main Footer Content -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
-      <!-- About -->
-      <div>
-        <h3 class="text-lg font-bold mb-4">Julien Bechkri</h3>
-        <p class="text-gray-400">
-          Digital Transformation & Organisation - Head of Product Management. Spécialiste en IA & Automation, Vision & Product Strategy, Innovation et Delivery Lead.
+<footer
+  itemscope
+  itemtype="https://schema.org/Person"
+  class="bg-slate-950 text-slate-100 mt-0 border-t border-slate-800"
+>
+  <div class="max-w-7xl mx-auto px-4 pt-16 pb-10">
+
+    <!-- Main grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-14">
+
+      <!-- Col 1 : Logo + identité -->
+      <div class="lg:col-span-1">
+        <a href="/" itemprop="url" aria-label="Julien Bechkri – Accueil">
+          <img
+            src="/images/JB_PRODUCT_SYSTEMS_transparent.png"
+            alt="JB Product Systems – Julien Bechkri"
+            class="h-32 w-auto mb-5 brightness-0 invert"
+          />
+        </a>
+        <p itemprop="description" class="text-slate-400 text-sm leading-relaxed mb-5">
+          J'accompagne les organisations IT et Produit à piloter par la valeur, structurer leurs décisions et délivrer ce qui compte vraiment.
         </p>
+        <!-- Social links with rel="me" pour SEO profil -->
+        <div class="flex items-center gap-3">
+          <a
+            href="https://www.linkedin.com/in/jbechkri/"
+            itemprop="sameAs"
+            target="_blank"
+            rel="noopener noreferrer me"
+            aria-label="Profil LinkedIn de Julien Bechkri"
+            class="w-9 h-9 rounded-full bg-slate-800 hover:bg-brand-600 flex items-center justify-center transition-colors"
+          >
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+          <button
+            id="footer-email-btn"
+            itemprop="email"
+            aria-label="Envoyer un email à Julien Bechkri"
+            class="w-9 h-9 rounded-full bg-slate-800 hover:bg-brand-600 flex items-center justify-center transition-colors cursor-pointer"
+          >
+            <svg class="w-4 h-4 fill-none stroke-current" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          </button>
+          <script>
+            document.getElementById('footer-email-btn').addEventListener('click', function() {
+              const u = 'julien.bechkri';
+              const d = 'gmail.com';
+              window.location.href = 'mailto:' + u + '@' + d;
+            });
+          </script>
+        </div>
       </div>
 
-      <!-- Quick Links -->
+      <!-- Col 2 : Navigation -->
       <div>
-        <h4 class="text-lg font-bold mb-4">Navigation</h4>
-        <ul class="space-y-2 text-gray-400">
-          <li><a href="/" class="hover:text-primary-400 transition">Accueil</a></li>
-          <li><a href="/about" class="hover:text-primary-400 transition">À Propos</a></li>
-          <li><a href="/projects" class="hover:text-primary-400 transition">Projets</a></li>
-          <li><a href="/blog" class="hover:text-primary-400 transition">Blog</a></li>
-          <li><a href="/testimonials" class="hover:text-primary-400 transition">Témoignages</a></li>
+        <h3 class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400 mb-5">Navigation</h3>
+        <nav aria-label="Navigation footer">
+          <ul class="space-y-3">
+            <li><a href="/" class="text-slate-300 hover:text-white text-sm transition-colors">Accueil</a></li>
+            <li><a href="/about" class="text-slate-300 hover:text-white text-sm transition-colors">À Propos</a></li>
+            <li><a href="/projects" class="text-slate-300 hover:text-white text-sm transition-colors">Projets & Réalisations</a></li>
+            <li><a href="/blog" class="text-slate-300 hover:text-white text-sm transition-colors">Blog Product Management</a></li>
+            <li><a href="/testimonials" class="text-slate-300 hover:text-white text-sm transition-colors">Témoignages clients</a></li>
+            <li><a href="/contact" class="text-slate-300 hover:text-white text-sm transition-colors">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <!-- Col 3 : Expertises -->
+      <div>
+        <h3 class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400 mb-5">Expertises</h3>
+        <ul class="space-y-3">
+          <li><span class="text-slate-300 text-sm">Product Management</span></li>
+          <li><span class="text-slate-300 text-sm">Transformation digitale</span></li>
+          <li><span class="text-slate-300 text-sm">Vision & Stratégie Produit</span></li>
+          <li><span class="text-slate-300 text-sm">IA & Automatisation</span></li>
+          <li><span class="text-slate-300 text-sm">Organisation & Leadership</span></li>
+          <li><span class="text-slate-300 text-sm">Delivery & Agilité</span></li>
         </ul>
       </div>
 
-      <!-- Contact -->
+      <!-- Col 4 : Contact -->
       <div>
-        <h4 class="text-lg font-bold mb-4">Contact</h4>
-        <ul class="space-y-2 text-gray-400">
-          <li>
-            <a href="mailto:julien.bechkri@digilityx.com" class="hover:text-primary-400 transition">
-              Email
-            </a>
-          </li>
-          <li>
-            <a href="https://www.linkedin.com/in/jbechkri/" target="_blank" rel="noopener noreferrer" class="hover:text-primary-400 transition">
-              LinkedIn
-            </a>
-          </li>
-          <li>
-            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="hover:text-primary-400 transition">
-              Twitter
-            </a>
-          </li>
-        </ul>
+        <h3 class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400 mb-5">Contact</h3>
+        <p class="text-sm text-slate-400 leading-relaxed mb-6">
+          Une question, un projet, une idée à creuser ? Parlons-en.
+        </p>
+        <a
+          href="/contact"
+          class="inline-flex items-center justify-center rounded-full bg-brand-600 hover:bg-brand-700 px-5 py-2.5 text-sm font-semibold text-white transition-colors"
+        >
+          Échangeons →
+        </a>
       </div>
+
     </div>
 
-    <!-- Divider -->
-    <div class="border-t border-gray-800 pt-8">
-      <p class="text-center text-gray-400">
-        © {currentYear} Julien Bechkri. All rights reserved.
+    <!-- Bottom bar -->
+    <div class="border-t border-slate-800 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p class="text-sm text-slate-500">
+        © {currentYear}
+        <span itemprop="name">Julien Bechkri</span>
+        <span itemprop="jobTitle" class="hidden">Head of Product Management – Digital Transformation & IA</span>
+        · Tous droits réservés
       </p>
+      <nav aria-label="Liens légaux" class="flex items-center gap-6">
+        <a href="/mentions-legales" class="text-xs text-slate-500 hover:text-slate-300 transition-colors">
+          Mentions légales
+        </a>
+        <a href="/sitemap-index.xml" class="text-xs text-slate-500 hover:text-slate-300 transition-colors">
+          Sitemap
+        </a>
+      </nav>
     </div>
+
   </div>
 </footer>
+
+<!-- JSON-LD Schema.org Person -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Julien Bechkri",
+  "url": "https://julienbechkri.com",
+  "jobTitle": "Head of Product Management",
+  "description": "Expert en Product Management, transformation digitale, stratégie produit et IA. J'accompagne les organisations IT et Produit à piloter par la valeur et délivrer ce qui compte vraiment.",
+  "sameAs": [
+    "https://www.linkedin.com/in/jbechkri/"
+  ],
+  "knowsAbout": [
+    "Product Management",
+    "Transformation digitale",
+    "Intelligence artificielle",
+    "Agilité",
+    "Vision produit",
+    "Leadership"
+  ]
+}
+</script>

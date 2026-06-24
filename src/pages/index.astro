@@ -10,120 +10,308 @@ const featuredTestimonials = testimonials.filter(t => t.featured).slice(0, 3);
 ---
 
 <BaseLayout title="Julien Bechkri - Product Manager & Agiliste">
-  <!-- Hero Section -->
-  <Hero 
+
+  <!-- Hero -->
+  <Hero
     title="Transformer la complexité en impact durable."
     subtitle="J'accompagne les organisations IT et Produit à piloter par la valeur, faire les bons choix et délivrer ce qui compte vraiment."
     ctaPrimary={{ text: "DÉCOUVRIR MON EXPERTISE", href: "/about" }}
     ctaSecondary={{ text: "VOIR DES RÉALISATIONS", href: "/projects" }}
   />
 
-  <!-- Featured Section -->
-  <section id="featured" class="max-w-6xl mx-auto px-4 py-20">
-    <!-- About Short -->
-    <div class="mb-20">
-      <h2 class="text-3xl font-bold mb-6">À Propos</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
-        <div class="md:col-span-2">
-          <p class="text-lg text-gray-600 mb-4">
-            Je pilote des transformations digitales en traduisant les idées stratégiques en résultats concrets. Depuis 15 ans, je conçois des écosystèmes digitaux, j'anime des programmes complexes et j'aligne les enjeux métiers, technologiques et utilisateurs.
-          </p>
-          <p class="text-lg text-gray-600 mb-6">
-            Spécialiste du cadrage, du delivery et de l'adoption, je mobilise les méthodes agiles, le design thinking et les leviers d'IA pour accélérer la création de valeur. Mon objectif : créer de l'impact à travers l'innovation, l'exécution et des expériences réellement utiles.
-          </p>
-          <a href="/about" class="inline-flex items-center gap-2 bg-primary-600 hover:bg-primary-700 text-white font-bold py-2 px-6 rounded-lg transition-colors">
-            Lire mon parcours complet →
-          </a>
-        </div>
-        <div class="bg-gray-200 rounded-lg h-64 flex items-center justify-center">
-          <p class="text-gray-500">Photo professionnel (à ajouter)</p>
-        </div>
+  <!-- À Propos -->
+  <section class="max-w-6xl mx-auto px-4 pt-20 pb-16">
+    <h2 class="text-3xl font-bold mb-6">À Propos</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+      <div class="md:col-span-2">
+        <p class="text-lg text-gray-600 mb-4">
+          Je pilote des transformations digitales en traduisant les idées stratégiques en résultats concrets. Depuis 15 ans, je conçois des écosystèmes digitaux, j'anime des programmes complexes et j'aligne les enjeux métiers, technologiques et utilisateurs.
+        </p>
+        <p class="text-lg text-gray-600 mb-6">
+          Spécialiste du cadrage, du delivery et de l'adoption, je mobilise les méthodes agiles, le design thinking et les leviers d'IA pour accélérer la création de valeur. Mon objectif : créer de l'impact à travers l'innovation, l'exécution et des expériences réellement utiles.
+        </p>
+        <a href="/about" class="inline-flex items-center gap-2 bg-brand-600 hover:bg-brand-700 text-white font-bold py-2 px-6 rounded-lg transition-colors">
+          Lire mon parcours complet →
+        </a>
+      </div>
+      <div class="bg-gray-200 rounded-lg h-64 flex items-center justify-center">
+        <p class="text-gray-500">Photo professionnel (à ajouter)</p>
       </div>
     </div>
+  </section>
 
-    <!-- Testimonials Section -->
-    <div class="mb-20">
-      <div class="mb-12 text-center">
-        <h2 class="text-3xl font-bold mb-4">Ce que mes clients disent</h2>
-        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-          Des retours authentiques de mes clients, collaborateurs et anciens directeurs sur mon impact en gestion produit et transformation agile.
+  <!-- Ce qui fait ma singularité -->
+  <section class="py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="text-center mb-14">
+        <h2 class="text-4xl font-bold text-slate-950 mb-4">Ce qui fait ma singularité</h2>
+        <p class="text-lg text-slate-500 max-w-2xl mx-auto">
+          Une combinaison rare d'expertise produit, de capacité d'intervention opérationnelle et de rigueur stratégique.
         </p>
       </div>
-      
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-        {featuredTestimonials.map((testimonial) => (
-          <TestimonialCard testimonial={testimonial} featured={true} />
-        ))}
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+
+        <!-- Carte 1 — slate-950 (fond sombre principal du site) -->
+        <div class="rounded-2xl p-7 flex flex-col gap-8 bg-slate-950">
+          <div class="w-14 h-14 flex items-center justify-center">
+            <svg viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-14 h-14">
+              <ellipse cx="20" cy="28" rx="14" ry="13" fill="rgba(255,255,255,0.15)"/>
+              <ellipse cx="36" cy="28" rx="14" ry="13" fill="rgba(255,255,255,0.25)"/>
+            </svg>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-white mb-3">Rester curieux, rester audacieux</h3>
+            <p class="text-sm leading-relaxed text-slate-400">
+              La curiosité et l'audace sont le moteur de tout. Se donner la liberté de questionner, de proposer et de bousculer les certitudes pour faire avancer les choses.
+            </p>
+          </div>
+        </div>
+
+        <!-- Carte 2 — brand-50 (fond clair du système de design) -->
+        <div class="rounded-2xl p-7 flex flex-col gap-8 bg-brand-50">
+          <div class="w-14 h-14 flex items-center justify-center">
+            <svg viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-14 h-14">
+              <line x1="28" y1="8" x2="28" y2="48" stroke="#1d4ed8" stroke-width="5" stroke-linecap="round"/>
+              <line x1="8" y1="28" x2="48" y2="28" stroke="#1d4ed8" stroke-width="5" stroke-linecap="round"/>
+              <line x1="14" y1="14" x2="42" y2="42" stroke="#1d4ed8" stroke-width="5" stroke-linecap="round"/>
+              <line x1="42" y1="14" x2="14" y2="42" stroke="#1d4ed8" stroke-width="5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-brand-900 mb-3">Donner sans compter</h3>
+            <p class="text-sm leading-relaxed text-brand-700">
+              La générosité est une boussole. Partager son temps, ses méthodes et son expérience sans attendre de retour immédiat — parce que c'est comme ça qu'on avance ensemble.
+            </p>
+          </div>
+        </div>
+
+        <!-- Carte 3 — brand-600 (couleur CTA principale du site) -->
+        <div class="rounded-2xl p-7 flex flex-col gap-8 bg-brand-600">
+          <div class="w-14 h-14 flex items-center justify-center">
+            <svg viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-14 h-14">
+              <rect x="6" y="8" width="44" height="30" rx="10" fill="rgba(255,255,255,0.25)"/>
+              <polygon points="16,38 24,48 32,38" fill="rgba(255,255,255,0.25)"/>
+            </svg>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-white mb-3">Agir avec intégrité</h3>
+            <p class="text-sm leading-relaxed text-blue-100">
+              Chaque décision est guidée par l'honnêteté. Transparence et cohérence dans les actions, qu'elles soient visibles ou non, font partie d'une façon de travailler non négociable.
+            </p>
+          </div>
+        </div>
+
+        <!-- Carte 4 — slate-800 (variante sombre du site) -->
+        <div class="rounded-2xl p-7 flex flex-col gap-8 bg-slate-800">
+          <div class="w-14 h-14 flex items-center justify-center">
+            <svg viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-14 h-14">
+              <circle cx="20" cy="20" r="9" fill="rgba(255,255,255,0.2)"/>
+              <circle cx="36" cy="20" r="9" fill="rgba(255,255,255,0.2)"/>
+              <circle cx="20" cy="36" r="9" fill="rgba(255,255,255,0.2)"/>
+              <circle cx="36" cy="36" r="9" fill="rgba(255,255,255,0.2)"/>
+            </svg>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-white mb-3">Viser l'excellence, toujours</h3>
+            <p class="text-sm leading-relaxed text-slate-400">
+              L'exigence et l'envie de progresser sont permanentes. Non pas pour se comparer aux autres, mais pour livrer un travail dont on est fier et qui crée un impact réel.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Projets en Vedette -->
+  <section class="max-w-6xl mx-auto px-4 py-16">
+    <div class="flex items-center justify-between mb-8">
+      <h2 class="text-3xl font-bold">Projets en Vedette</h2>
+      <a href="/projects" class="text-primary-600 hover:text-primary-700 font-semibold">
+        Voir tous les projets →
+      </a>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <ProjectCard
+        title="Refonte de l'approche Product"
+        description="Passage d'une organisation en silos à une véritable organisation orientée produit dans une entreprise de 500+ personnes."
+        tags={["Product", "Transformation", "Leadership"]}
+      />
+      <ProjectCard
+        title="Mise en place de la culture Agile"
+        description="Accompagnement des équipes de développement et produit vers une véritable adoption des méthodes agiles."
+        tags={["Agilité", "Coaching", "Formation"]}
+      />
+    </div>
+  </section>
+
+  <!-- Articles Récents -->
+  <section class="max-w-6xl mx-auto px-4 py-16">
+    <div class="flex items-center justify-between mb-8">
+      <h2 class="text-3xl font-bold">Articles Récents</h2>
+      <a href="/blog" class="text-primary-600 hover:text-primary-700 font-semibold">
+        Voir tous les articles →
+      </a>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <ArticleCard
+        title="Les 5 principes clés de la gestion agile"
+        description="Découvrez les fondamentaux de l'agilité et comment les appliquer dans votre contexte d'entreprise."
+        date="2026-04-15"
+        tags={["Agilité", "Management"]}
+        external={true}
+        category="Agile"
+        eyecatchImage="/images/illustrations/gestion-agile.svg"
+        url="https://blog-entreprise.com/article-1"
+      />
+      <ArticleCard
+        title="Product Management : Vision vs Exécution"
+        description="Comment trouver l'équilibre entre une vision ambitieuse et une exécution pragmatique."
+        date="2026-04-10"
+        tags={["Product", "Stratégie"]}
+        external={true}
+        category="Product"
+        eyecatchImage="/images/illustrations/vision-vs-execution.svg"
+        url="https://blog-entreprise.com/article-2"
+      />
+      <ArticleCard
+        title="Transformation digitale : Au-delà de la technologie"
+        description="La transformation digitale, c'est d'abord une question de culture et de mindset."
+        date="2026-04-05"
+        tags={["Digital", "Transformation"]}
+        external={true}
+        category="Digital"
+        eyecatchImage="/images/illustrations/transformation-digitale.svg"
+        url="https://blog-entreprise.com/article-3"
+      />
+    </div>
+  </section>
+
+  <!-- Formations -->
+  <section class="bg-slate-50 border-y border-slate-100 py-20 md:py-24">
+    <div class="max-w-6xl mx-auto px-4">
+
+      <!-- Header -->
+      <div class="text-center mb-14">
+        <span class="inline-flex items-center rounded-full border border-brand-200 bg-brand-50 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.25em] text-brand-600 mb-5">
+          Formations
+        </span>
+        <h2 class="text-4xl md:text-5xl font-bold text-slate-950 leading-tight mb-5">
+          Montez en compétences.<br/>
+          <span class="text-brand-600">À votre rythme, à votre niveau.</span>
+        </h2>
+        <p class="text-lg text-slate-500 max-w-2xl mx-auto leading-relaxed">
+          Des formations sur mesure — en individuel ou en groupe — pour acquérir les méthodes et réflexes qui font la différence au quotidien.
+        </p>
       </div>
 
+      <!-- Cards -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-14">
+
+        <!-- Agilité -->
+        <div class="group bg-white rounded-2xl border border-slate-200 p-7 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300">
+          <div class="mb-5 inline-flex items-center justify-center w-12 h-12 rounded-xl bg-brand-50 text-brand-600">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-slate-950 mb-3">Agilité & Méthodes agiles</h3>
+          <p class="text-slate-500 leading-relaxed mb-6 text-sm">
+            Scrum, Kanban, Lean — adopter une posture agile, structurer ses cérémonies, fluidifier ses sprints et ancrer une vraie culture d'amélioration continue.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="rounded-full bg-brand-50 border border-brand-200 px-3 py-1 text-xs font-medium text-brand-700">Individuel</span>
+            <span class="rounded-full bg-cyan-50 border border-cyan-200 px-3 py-1 text-xs font-medium text-cyan-700">Groupe</span>
+          </div>
+        </div>
+
+        <!-- Priorisation -->
+        <div class="group bg-white rounded-2xl border border-slate-200 p-7 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300">
+          <div class="mb-5 inline-flex items-center justify-center w-12 h-12 rounded-xl bg-purple-50 text-purple-600">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 4h13M3 8h9m-9 4h6m4 0l4-4m0 0l4 4m-4-4v12"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-slate-950 mb-3">Méthodes de priorisation</h3>
+          <p class="text-slate-500 leading-relaxed mb-6 text-sm">
+            MoSCoW, WSJF, RICE, ICE scoring, matrice de valeur — savoir arbitrer vite et bien, défendre ses choix avec des critères objectifs et aligner les parties prenantes.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="rounded-full bg-brand-50 border border-brand-200 px-3 py-1 text-xs font-medium text-brand-700">Individuel</span>
+            <span class="rounded-full bg-cyan-50 border border-cyan-200 px-3 py-1 text-xs font-medium text-cyan-700">Groupe</span>
+          </div>
+        </div>
+
+        <!-- Gestion de projet -->
+        <div class="group bg-white rounded-2xl border border-slate-200 p-7 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300">
+          <div class="mb-5 inline-flex items-center justify-center w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-slate-950 mb-3">Gestion de projet</h3>
+          <p class="text-slate-500 leading-relaxed mb-6 text-sm">
+            Cadrage, planification, suivi des jalons, gestion des risques et communication avec les sponsors — les fondamentaux pour livrer dans les temps sans subir.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="rounded-full bg-brand-50 border border-brand-200 px-3 py-1 text-xs font-medium text-brand-700">Individuel</span>
+            <span class="rounded-full bg-cyan-50 border border-cyan-200 px-3 py-1 text-xs font-medium text-cyan-700">Groupe</span>
+          </div>
+        </div>
+
+        <!-- Pilotage par la valeur -->
+        <div class="group bg-white rounded-2xl border border-slate-200 p-7 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300">
+          <div class="mb-5 inline-flex items-center justify-center w-12 h-12 rounded-xl bg-amber-50 text-amber-600">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-slate-950 mb-3">Pilotage par la valeur</h3>
+          <p class="text-slate-500 leading-relaxed mb-6 text-sm">
+            OKR, North Star Metric, KPI actionnables, mesure d'impact — passer d'un pilotage par l'activité à un pilotage par les résultats qui comptent vraiment.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="rounded-full bg-brand-50 border border-brand-200 px-3 py-1 text-xs font-medium text-brand-700">Individuel</span>
+            <span class="rounded-full bg-cyan-50 border border-cyan-200 px-3 py-1 text-xs font-medium text-cyan-700">Groupe</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- CTA -->
       <div class="text-center">
-        <a href="/testimonials" class="inline-flex items-center gap-2 text-primary-600 hover:text-primary-700 font-semibold">
-          Lire tous les témoignages →
+        <p class="text-slate-400 text-sm mb-6">Toutes les formations sont adaptées à votre contexte et à votre niveau. Durée, format et contenu définis ensemble.</p>
+        <a
+          href="/contact"
+          class="inline-flex items-center gap-3 rounded-full bg-brand-600 hover:bg-brand-700 px-8 py-4 text-base font-semibold text-white shadow-lg shadow-brand-600/20 transition-all hover:-translate-y-0.5"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+          </svg>
+          Discuter de votre formation
         </a>
       </div>
+
     </div>
+  </section>
 
-    <!-- Featured Articles -->
-    <div class="mb-20">
-      <div class="flex items-center justify-between mb-8">
-        <h2 class="text-3xl font-bold">Articles Récents</h2>
-        <a href="/blog" class="text-primary-600 hover:text-primary-700 font-semibold">
-          Voir tous les articles →
-        </a>
-      </div>
-      
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <ArticleCard
-          title="Les 5 principes clés de la gestion agile"
-          description="Découvrez les fondamentaux de l'agilité et comment les appliquer dans votre contexte d'entreprise."
-          date="2026-04-15"
-          tags={["Agilité", "Management"]}
-          external={true}
-          category="Agile"
-          url="https://blog-entreprise.com/article-1"
-        />
-        <ArticleCard
-          title="Product Management : Vision vs Exécution"
-          description="Comment trouver l'équilibre entre une vision ambitieuse et une exécution pragmatique."
-          date="2026-04-10"
-          tags={["Product", "Stratégie"]}
-          external={true}
-          category="Product"
-          url="https://blog-entreprise.com/article-2"
-        />
-        <ArticleCard
-          title="Transformation digitale : Au-delà de la technologie"
-          description="La transformation digitale, c'est d'abord une question de culture et de mindset."
-          date="2026-04-05"
-          tags={["Digital", "Transformation"]}
-          external={true}
-          category="Digital"
-          url="https://blog-entreprise.com/article-3"
-        />
-      </div>
+  <!-- Témoignages -->
+  <section class="max-w-6xl mx-auto px-4 py-20">
+    <div class="mb-12 text-center">
+      <h2 class="text-3xl font-bold mb-4">Ce que mes clients disent</h2>
+      <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+        Des retours authentiques de mes clients, collaborateurs et anciens directeurs sur mon impact en gestion produit et transformation agile.
+      </p>
     </div>
-
-    <!-- Featured Projects -->
-    <div>
-      <div class="flex items-center justify-between mb-8">
-        <h2 class="text-3xl font-bold">Projets en Vedette</h2>
-        <a href="/projects" class="text-primary-600 hover:text-primary-700 font-semibold">
-          Voir tous les projets →
-        </a>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <ProjectCard
-          title="Refonte de l'approche Product"
-          description="Passage d'une organisation en silos à une véritable organisation orientée produit dans une entreprise de 500+ personnes."
-          tags={["Product", "Transformation", "Leadership"]}
-        />
-        <ProjectCard
-          title="Mise en place de la culture Agile"
-          description="Accompagnement des équipes de développement et produit vers une véritable adoption des méthodes agiles."
-          tags={["Agilité", "Coaching", "Formation"]}
-        />
-      </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+      {featuredTestimonials.map((testimonial) => (
+        <TestimonialCard testimonial={testimonial} featured={true} />
+      ))}
+    </div>
+    <div class="text-center">
+      <a href="/testimonials" class="inline-flex items-center gap-2 text-primary-600 hover:text-primary-700 font-semibold">
+        Lire tous les témoignages →
+      </a>
     </div>
   </section>
 
@@ -139,7 +327,7 @@ const featuredTestimonials = testimonials.filter(t => t.featured).slice(0, 3);
             </p>
           </div>
           <div class="flex items-center justify-start lg:justify-end">
-            <a href="#contact" class="inline-flex items-center justify-center rounded-full bg-slate-950 px-8 py-4 text-sm font-semibold text-white shadow-lg shadow-slate-950/20 transition hover:bg-slate-800">
+            <a href="/contact" class="inline-flex items-center justify-center rounded-full bg-slate-950 px-8 py-4 text-sm font-semibold text-white shadow-lg shadow-slate-950/20 transition hover:bg-slate-800">
               Réserver un échange
             </a>
           </div>
@@ -147,4 +335,5 @@ const featuredTestimonials = testimonials.filter(t => t.featured).slice(0, 3);
       </div>
     </div>
   </section>
+
 </BaseLayout>

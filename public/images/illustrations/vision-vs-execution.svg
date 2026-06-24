@@ -1,0 +1,76 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#1E3A5F" />
+      <stop offset="100%" stop-color="#0F172A" />
+    </linearGradient>
+    <linearGradient id="left" x1="0" y1="0" x2="1" y2="1" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#3B82F6" />
+      <stop offset="100%" stop-color="#1D4ED8" />
+    </linearGradient>
+    <linearGradient id="right" x1="0" y1="0" x2="1" y2="1" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#F97316" />
+      <stop offset="100%" stop-color="#EA580C" />
+    </linearGradient>
+    <linearGradient id="bridge" x1="0" y1="0" x2="1" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#3B82F6" />
+      <stop offset="100%" stop-color="#F97316" />
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)" />
+
+  <!-- Background glows -->
+  <circle cx="320" cy="280" r="220" fill="#3B82F6" opacity="0.07" />
+  <circle cx="880" cy="280" r="220" fill="#F97316" opacity="0.07" />
+
+  <!-- Left circle: Vision -->
+  <circle cx="330" cy="270" r="130" fill="url(#left)" opacity="0.9" />
+  <circle cx="330" cy="270" r="100" fill="#FFFFFF" fill-opacity="0.06" />
+  <!-- Eye icon for vision -->
+  <ellipse cx="330" cy="265" rx="45" ry="28" stroke="#FFFFFF" stroke-width="3" fill="none" opacity="0.9" />
+  <circle cx="330" cy="265" r="14" fill="#FFFFFF" opacity="0.9" />
+  <circle cx="330" cy="265" r="7" fill="#1D4ED8" />
+  <!-- Stars around -->
+  <circle cx="280" cy="225" r="4" fill="#FFFFFF" opacity="0.6" />
+  <circle cx="385" cy="220" r="3" fill="#FFFFFF" opacity="0.5" />
+  <circle cx="295" cy="310" r="3" fill="#FFFFFF" opacity="0.4" />
+  <circle cx="370" cy="318" r="4" fill="#FFFFFF" opacity="0.5" />
+
+  <text x="330" y="340" fill="#FFFFFF" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="800" text-anchor="middle">VISION</text>
+  <text x="330" y="362" fill="#93C5FD" font-family="Inter, Arial, sans-serif" font-size="13" text-anchor="middle">Où allons-nous ?</text>
+
+  <!-- Right circle: Execution -->
+  <circle cx="870" cy="270" r="130" fill="url(#right)" opacity="0.9" />
+  <circle cx="870" cy="270" r="100" fill="#FFFFFF" fill-opacity="0.06" />
+  <!-- Gear/cog icon for execution -->
+  <circle cx="870" cy="265" r="30" fill="none" stroke="#FFFFFF" stroke-width="3" opacity="0.9" />
+  <circle cx="870" cy="265" r="14" fill="#FFFFFF" opacity="0.9" />
+  <circle cx="870" cy="265" r="8" fill="#EA580C" />
+  <!-- Gear teeth -->
+  <rect x="863" y="228" width="14" height="12" rx="3" fill="#FFFFFF" opacity="0.8" />
+  <rect x="863" y="290" width="14" height="12" rx="3" fill="#FFFFFF" opacity="0.8" />
+  <rect x="832" y="258" width="12" height="14" rx="3" fill="#FFFFFF" opacity="0.8" />
+  <rect x="896" y="258" width="12" height="14" rx="3" fill="#FFFFFF" opacity="0.8" />
+
+  <text x="870" y="340" fill="#FFFFFF" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="800" text-anchor="middle">EXÉCUTION</text>
+  <text x="870" y="362" fill="#FDBA74" font-family="Inter, Arial, sans-serif" font-size="13" text-anchor="middle">Comment y arriver ?</text>
+
+  <!-- Bridge between the two -->
+  <rect x="470" y="262" width="260" height="16" rx="8" fill="url(#bridge)" opacity="0.8" />
+  <!-- Arrow left to right -->
+  <polygon points="734,256 760,270 734,284" fill="#F97316" opacity="0.9" />
+  <!-- Center bridge label -->
+  <rect x="535" y="240" width="130" height="36" rx="10" fill="#FFFFFF" fill-opacity="0.1" stroke="#FFFFFF" stroke-opacity="0.2" stroke-width="1" />
+  <text x="600" y="263" fill="#FFFFFF" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="middle">Équilibre</text>
+
+  <!-- Subtitle tags -->
+  <rect x="190" y="408" width="280" height="38" rx="10" fill="#3B82F6" fill-opacity="0.2" stroke="#3B82F6" stroke-opacity="0.4" stroke-width="1" />
+  <text x="330" y="432" fill="#93C5FD" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="600" text-anchor="middle">Ambition · Cap · Valeur long terme</text>
+  <rect x="730" y="408" width="280" height="38" rx="10" fill="#F97316" fill-opacity="0.2" stroke="#F97316" stroke-opacity="0.4" stroke-width="1" />
+  <text x="870" y="432" fill="#FDBA74" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="600" text-anchor="middle">Delivery · Sprint · Impact immédiat</text>
+
+  <!-- Title -->
+  <text x="80" y="540" fill="#FFFFFF" font-family="Inter, Arial, sans-serif" font-size="40" font-weight="700">Vision vs Exécution</text>
+  <text x="80" y="585" fill="#FFFFFF" font-family="Inter, Arial, sans-serif" font-size="24" opacity="0.7">Trouver l'équilibre en Product Management</text>
+</svg>

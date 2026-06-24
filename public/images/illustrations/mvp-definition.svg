@@ -1,0 +1,71 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#7C2D12" />
+      <stop offset="100%" stop-color="#F97316" />
+    </linearGradient>
+    <linearGradient id="layer1" x1="0" y1="0" x2="1" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FED7AA" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#FDBA74" stop-opacity="0.7" />
+    </linearGradient>
+    <linearGradient id="layer2" x1="0" y1="0" x2="1" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.5" />
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.2" />
+    </linearGradient>
+    <linearGradient id="layer3" x1="0" y1="0" x2="1" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.15" />
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.05" />
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)" />
+
+  <!-- Decorative glow -->
+  <circle cx="600" cy="320" r="250" fill="#FBBF24" opacity="0.04" />
+  <circle cx="980" cy="100" r="180" fill="#F97316" opacity="0.07" />
+
+  <!-- Pyramid - Layer 3 (bottom - full product) -->
+  <polygon points="250,460 950,460 830,340 370,340" fill="url(#layer3)" stroke="#FFFFFF" stroke-opacity="0.15" stroke-width="1" />
+  <text x="600" y="408" fill="#FFFFFF" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="600" text-anchor="middle" opacity="0.5">Nice to Have</text>
+
+  <!-- Pyramid - Layer 2 (middle) -->
+  <polygon points="370,340 830,340 710,220 490,220" fill="url(#layer2)" stroke="#FFFFFF" stroke-opacity="0.3" stroke-width="1" />
+  <text x="600" y="288" fill="#FFFFFF" font-family="Inter, Arial, sans-serif" font-size="16" font-weight="600" text-anchor="middle" opacity="0.75">Should Have</text>
+
+  <!-- Pyramid - Layer 1 (top - MVP) -->
+  <polygon points="490,220 710,220 600,110" fill="url(#layer1)" stroke="#FED7AA" stroke-opacity="0.6" stroke-width="1.5" />
+  <text x="600" y="185" fill="#7C2D12" font-family="Inter, Arial, sans-serif" font-size="17" font-weight="800" text-anchor="middle">MVP</text>
+
+  <!-- Label arrows -->
+  <line x1="720" y1="155" x2="820" y2="130" stroke="#FED7AA" stroke-width="1.5" stroke-opacity="0.7" />
+  <rect x="820" y="110" width="160" height="44" rx="10" fill="#FFFFFF" fill-opacity="0.1" stroke="#FED7AA" stroke-opacity="0.4" stroke-width="1" />
+  <text x="900" y="128" fill="#FED7AA" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="700" text-anchor="middle">Minimum</text>
+  <text x="900" y="146" fill="#FED7AA" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="700" text-anchor="middle">Viable Product</text>
+
+  <!-- Rocket -->
+  <g transform="translate(1000, 130) rotate(45)">
+    <ellipse cx="0" cy="0" rx="18" ry="38" fill="#FFFFFF" opacity="0.9" />
+    <polygon points="-18,20 18,20 0,48" fill="#FED7AA" opacity="0.8" />
+    <polygon points="-18,0 -36,28 -18,20" fill="#FFFFFF" opacity="0.5" />
+    <polygon points="18,0 36,28 18,20" fill="#FFFFFF" opacity="0.5" />
+    <circle cx="0" cy="-6" r="8" fill="#F97316" opacity="0.9" />
+  </g>
+
+  <!-- Steps legend -->
+  <rect x="100" y="180" width="100" height="34" rx="10" fill="#FFFFFF" fill-opacity="0.1" stroke="#FED7AA" stroke-opacity="0.3" stroke-width="1" />
+  <text x="150" y="202" fill="#FED7AA" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="600" text-anchor="middle">Tester</text>
+
+  <rect x="100" y="228" width="100" height="34" rx="10" fill="#FFFFFF" fill-opacity="0.1" stroke="#FED7AA" stroke-opacity="0.3" stroke-width="1" />
+  <text x="150" y="250" fill="#FED7AA" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="600" text-anchor="middle">Apprendre</text>
+
+  <rect x="100" y="276" width="100" height="34" rx="10" fill="#FFFFFF" fill-opacity="0.1" stroke="#FED7AA" stroke-opacity="0.3" stroke-width="1" />
+  <text x="150" y="298" fill="#FED7AA" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="600" text-anchor="middle">Itérer</text>
+
+  <!-- Arrows between steps -->
+  <path d="M150 214 L150 228" stroke="#FED7AA" stroke-width="1.5" stroke-opacity="0.5" marker-end="url(#arr)" />
+  <path d="M150 262 L150 276" stroke="#FED7AA" stroke-width="1.5" stroke-opacity="0.5" />
+
+  <!-- Title -->
+  <text x="80" y="540" fill="#FFFFFF" font-family="Inter, Arial, sans-serif" font-size="40" font-weight="700">MVP — Minimum Viable Product</text>
+  <text x="80" y="585" fill="#FFFFFF" font-family="Inter, Arial, sans-serif" font-size="24" opacity="0.7">Définition, principes et méthode</text>
+</svg>

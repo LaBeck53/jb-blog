@@ -3,6 +3,7 @@ title: "Rôles et interactions dans une organisation produit"
 description: "L'organisation produit se densifie et voit apparaître de nouvelles appellations et rôles tels que Product Marketing Manager, Product Ops/Operation, Product Designer, Product builder. Complexification ou fluidification ? Quelles interactions entre ces nouveaux acteurs ?"
 pubDate: 2021-11-23
 updatedDate: 2021-11-23
+heroImage: "/images/illustrations/roles-organisation-produit.svg"
 tags: ["Product Management", "Organisation", "Rôles", "Équipe"]
 draft: false
 ---
@@ -35,7 +36,7 @@ Nous pouvons nous interroger sur le rattachement hiérarchique au PM ? Si oui, �
 
 Rattaché au département marketing, le PMM se concentre davantage sur les éléments qui vont motiver un acte d'achat. On parle également de Buyer Research. Son travail est essentiellement basé sur l'environnement, le secteur, le marché, la concurrence. Comprendre ce dont les gens ont besoin de savoir sur le produit pour faire en sorte qu'il soit acheté ou consommé.
 
-Mais n'est-ce pas déjà le rôle accordé au périmètre d'intervention d'un PM ? Pour nous le marketing doit s'exprimer notamment dans la phase Growth du cycle produit, et c'est effectivement sous l'égide du traditionnel PM.
+Mais n'est-ce pas déjà le rôle accordé au périmètre d'intervention d'un PM ? Pour moi le marketing doit s'exprimer notamment dans la phase Growth du cycle produit, et c'est effectivement sous l'égide du traditionnel PM.
 
 ### Le Product Designer
 
@@ -59,14 +60,13 @@ Certains produits sont tellement denses qu'il n'y à pas d'autres possibilités 
 
 ## Quelques convictions
 
-Dans notre vision "Digilitienne", le Product Manager doit être le plus global possible et ne pas se cantonner qu'aux métiers et aux développements. Il se doit d'être le plus polyvalent possible, comprendre et entendre chaque sphère pour être en mesure d'arbitrer là où il y a le plus de valeur pour le produit et ses utilisateurs.
+Le Product Manager doit être le plus global possible et ne pas se cantonner qu'aux métiers et aux développements. Il se doit d'être le plus polyvalent possible, comprendre et entendre chaque sphère pour être en mesure d'arbitrer là où il y a le plus de valeur pour le produit et ses utilisateurs.
 
-Pour nous le Product Ops n'intervient que dans des structures extrêmement larges. Le nouveau scrum master de l'orga produit ? Méthode ou outils, chacun son style.
+Pour moi le Product Ops n'intervient que dans des structures extrêmement larges. Le nouveau scrum master de l'orga produit ? Méthode ou outils, chacun son style.
 
 Le Product Designer lui, même s'il se doit d'être le plus transversal possible et intervenant sur l'ensemble la chaîne produit, ne devra pas empiéter sur le rôle du PM. Attention aux conflits.
 
-C'est sur le PMM que nous avons plus d'attente. Pour nous, il est trop concentré sur l'étude du marché dans sa définition propre, là où nous l'attendons plutôt sur les tests et le market fit pur. Il doit porter les notions de Market c(r)ash plus en avant pour donner une visibilité sur le taux d'engagement des cibles actuelles et futures. Là est sa plus-value.
+C'est sur le PMM qu'il y a plus d'attente. N'est-il pas trop concentré sur l'étude du marché dans sa définition propre, là où nous l'attendons plutôt sur les tests et le market fit pur. Il doit porter les notions de Market c(r)ash plus en avant pour donner une visibilité sur le taux d'engagement des cibles actuelles et futures. Là est sa plus-value.
 
 Quelque soit l'organisation produit, la vision globale, la data driven attitude, les lotissements orientés valeur utilisateur restent de mise. La différence se fera à travers la méthodologie mise en place. Pas une spécifique, mais l'adaptation de toutes les best practices de chacune visant à servir l'organisation produit du moment, qui doit rester flexible dans tous les cas.
 
-Si toi aussi tu es PO / PM / PMM / POps / PDesigner / Productophile à 5 pattes et que tu es concentré sur la valeur que tu apportes, que tu tends à une vision élargie, nous t'invitions à postuler ici, tu as ta place !

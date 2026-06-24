@@ -1,0 +1,82 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#2E1065" />
+      <stop offset="100%" stop-color="#7E22CE" />
+    </linearGradient>
+    <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.18" />
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.05" />
+    </linearGradient>
+    <linearGradient id="persona" x1="0" y1="0" x2="0" y2="1" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#A855F7" stop-opacity="0.4" />
+      <stop offset="100%" stop-color="#7C3AED" stop-opacity="0.2" />
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)" />
+  <circle cx="1050" cy="150" r="200" fill="#A855F7" opacity="0.06" />
+  <circle cx="150" cy="500" r="160" fill="#7C3AED" opacity="0.07" />
+
+  <!-- Magnifying glass -->
+  <circle cx="420" cy="270" r="160" fill="url(#glass)" stroke="#D8B4FE" stroke-opacity="0.3" stroke-width="3" />
+  <circle cx="420" cy="270" r="130" fill="none" stroke="#D8B4FE" stroke-opacity="0.12" stroke-width="1" />
+  <!-- Handle -->
+  <line x1="538" y1="388" x2="610" y2="460" stroke="#D8B4FE" stroke-width="18" stroke-linecap="round" stroke-opacity="0.7" />
+  <line x1="538" y1="388" x2="610" y2="460" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" stroke-opacity="0.4" />
+
+  <!-- Inside the glass: user persona -->
+  <circle cx="420" cy="240" r="38" fill="#A855F7" opacity="0.7" />
+  <!-- Head -->
+  <circle cx="420" cy="228" r="18" fill="#FFFFFF" opacity="0.85" />
+  <!-- Body -->
+  <path d="M394 278 C394 260 406 252 420 252 C434 252 446 260 446 278" fill="#FFFFFF" opacity="0.6" />
+
+  <!-- Insights bubbles floating around inside glass -->
+  <rect x="335" y="192" width="70" height="26" rx="10" fill="#7C3AED" opacity="0.8" />
+  <text x="370" y="209" fill="#E9D5FF" font-family="Inter, Arial, sans-serif" font-size="10" font-weight="600" text-anchor="middle">Pain point</text>
+  <rect x="450" y="186" width="68" height="26" rx="10" fill="#9333EA" opacity="0.7" />
+  <text x="484" y="203" fill="#F3E8FF" font-family="Inter, Arial, sans-serif" font-size="10" font-weight="600" text-anchor="middle">Besoin</text>
+  <rect x="340" y="300" width="65" height="26" rx="10" fill="#6D28D9" opacity="0.7" />
+  <text x="372" y="317" fill="#E9D5FF" font-family="Inter, Arial, sans-serif" font-size="10" font-weight="600" text-anchor="middle">Attente</text>
+  <rect x="440" y="305" width="68" height="26" rx="10" fill="#7C3AED" opacity="0.8" />
+  <text x="474" y="322" fill="#F3E8FF" font-family="Inter, Arial, sans-serif" font-size="10" font-weight="600" text-anchor="middle">Friction</text>
+
+  <!-- Right side: Persona cards -->
+  <rect x="720" y="130" width="200" height="140" rx="16" fill="url(#persona)" stroke="#C4B5FD" stroke-opacity="0.25" stroke-width="1" />
+  <circle cx="760" cy="168" r="22" fill="#A855F7" opacity="0.8" />
+  <circle cx="760" cy="158" r="10" fill="#FFFFFF" opacity="0.85" />
+  <path d="M742 190 C742 178 750 172 760 172 C770 172 778 178 778 190" fill="#FFFFFF" opacity="0.6" />
+  <text x="800" y="162" fill="#FFFFFF" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="700">Clara, 34</text>
+  <text x="800" y="179" fill="#D8B4FE" font-family="Inter, Arial, sans-serif" font-size="11">Product Manager</text>
+  <rect x="738" y="202" width="164" height="6" rx="3" fill="#FFFFFF" opacity="0.2" />
+  <rect x="738" y="216" width="130" height="6" rx="3" fill="#FFFFFF" opacity="0.15" />
+  <rect x="738" y="230" width="150" height="6" rx="3" fill="#FFFFFF" opacity="0.1" />
+
+  <rect x="940" y="130" width="200" height="140" rx="16" fill="url(#persona)" stroke="#C4B5FD" stroke-opacity="0.25" stroke-width="1" />
+  <circle cx="980" cy="168" r="22" fill="#7C3AED" opacity="0.8" />
+  <circle cx="980" cy="158" r="10" fill="#FFFFFF" opacity="0.85" />
+  <path d="M962 190 C962 178 970 172 980 172 C990 172 998 178 998 190" fill="#FFFFFF" opacity="0.6" />
+  <text x="1020" y="162" fill="#FFFFFF" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="700">Marc, 28</text>
+  <text x="1020" y="179" fill="#D8B4FE" font-family="Inter, Arial, sans-serif" font-size="11">UX Designer</text>
+  <rect x="958" y="202" width="164" height="6" rx="3" fill="#FFFFFF" opacity="0.2" />
+  <rect x="958" y="216" width="130" height="6" rx="3" fill="#FFFFFF" opacity="0.15" />
+  <rect x="958" y="230" width="150" height="6" rx="3" fill="#FFFFFF" opacity="0.1" />
+
+  <!-- Interview / research cards -->
+  <rect x="720" y="290" width="420" height="50" rx="12" fill="#FFFFFF" fill-opacity="0.08" stroke="#C4B5FD" stroke-opacity="0.2" stroke-width="1" />
+  <rect x="736" y="307" width="8" height="8" rx="2" fill="#A855F7" opacity="0.8" />
+  <text x="756" y="320" fill="#FFFFFF" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="600" opacity="0.8">Entretien utilisateur · 12 interviews</text>
+
+  <rect x="720" y="354" width="420" height="50" rx="12" fill="#FFFFFF" fill-opacity="0.08" stroke="#C4B5FD" stroke-opacity="0.2" stroke-width="1" />
+  <rect x="736" y="371" width="8" height="8" rx="2" fill="#9333EA" opacity="0.8" />
+  <text x="756" y="384" fill="#FFFFFF" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="600" opacity="0.8">Analyse qualitative · Thèmes émergents</text>
+
+  <rect x="720" y="418" width="420" height="50" rx="12" fill="#7C3AED" fill-opacity="0.3" stroke="#A855F7" stroke-opacity="0.4" stroke-width="1" />
+  <rect x="736" y="435" width="8" height="8" rx="2" fill="#D8B4FE" opacity="0.9" />
+  <text x="756" y="448" fill="#FFFFFF" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="600" opacity="0.9">Insight validé → Décision produit</text>
+
+  <!-- Title -->
+  <text x="80" y="540" fill="#FFFFFF" font-family="Inter, Arial, sans-serif" font-size="40" font-weight="700">User Research</text>
+  <text x="80" y="585" fill="#FFFFFF" font-family="Inter, Arial, sans-serif" font-size="24" opacity="0.7">Aller au-delà des hypothèses</text>
+</svg>

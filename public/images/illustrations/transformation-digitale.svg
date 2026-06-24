@@ -1,0 +1,77 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0C1445" />
+      <stop offset="100%" stop-color="#0E7490" />
+    </linearGradient>
+    <linearGradient id="human" x1="0" y1="0" x2="1" y2="1" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#38BDF8" />
+      <stop offset="100%" stop-color="#0284C7" />
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)" />
+
+  <!-- Background circuit lines -->
+  <line x1="0" y1="180" x2="1200" y2="180" stroke="#38BDF8" stroke-width="0.5" stroke-opacity="0.08" />
+  <line x1="0" y1="320" x2="1200" y2="320" stroke="#38BDF8" stroke-width="0.5" stroke-opacity="0.08" />
+  <line x1="0" y1="460" x2="1200" y2="460" stroke="#38BDF8" stroke-width="0.5" stroke-opacity="0.08" />
+  <line x1="240" y1="0" x2="240" y2="630" stroke="#38BDF8" stroke-width="0.5" stroke-opacity="0.08" />
+  <line x1="480" y1="0" x2="480" y2="630" stroke="#38BDF8" stroke-width="0.5" stroke-opacity="0.08" />
+  <line x1="720" y1="0" x2="720" y2="630" stroke="#38BDF8" stroke-width="0.5" stroke-opacity="0.08" />
+  <line x1="960" y1="0" x2="960" y2="630" stroke="#38BDF8" stroke-width="0.5" stroke-opacity="0.08" />
+
+  <!-- Circuit nodes -->
+  <circle cx="240" cy="180" r="4" fill="#38BDF8" opacity="0.3" />
+  <circle cx="480" cy="180" r="4" fill="#38BDF8" opacity="0.3" />
+  <circle cx="720" cy="180" r="4" fill="#38BDF8" opacity="0.3" />
+  <circle cx="960" cy="180" r="4" fill="#38BDF8" opacity="0.3" />
+  <circle cx="240" cy="320" r="4" fill="#38BDF8" opacity="0.3" />
+  <circle cx="480" cy="320" r="6" fill="#38BDF8" opacity="0.6" />
+  <circle cx="720" cy="320" r="6" fill="#38BDF8" opacity="0.6" />
+  <circle cx="960" cy="320" r="4" fill="#38BDF8" opacity="0.3" />
+  <circle cx="240" cy="460" r="4" fill="#38BDF8" opacity="0.3" />
+  <circle cx="480" cy="460" r="4" fill="#38BDF8" opacity="0.3" />
+  <circle cx="720" cy="460" r="4" fill="#38BDF8" opacity="0.3" />
+  <circle cx="960" cy="460" r="4" fill="#38BDF8" opacity="0.3" />
+
+  <!-- Human silhouette (left side) -->
+  <circle cx="310" cy="220" r="36" fill="url(#human)" opacity="0.85" />
+  <path d="M252 340 C252 296 280 270 310 270 C340 270 368 296 368 340 L368 370 L252 370 Z" fill="url(#human)" opacity="0.7" />
+  <!-- Subtle glow -->
+  <circle cx="310" cy="220" r="60" fill="#38BDF8" opacity="0.08" />
+
+  <!-- Arrow transformation -->
+  <path d="M390 295 C430 295 450 295 490 295" stroke="#38BDF8" stroke-width="3" stroke-opacity="0.7" fill="none" />
+  <polygon points="490,287 510,295 490,303" fill="#38BDF8" opacity="0.8" />
+
+  <!-- Digital brain / network (right side) -->
+  <circle cx="700" cy="280" r="100" fill="#0E7490" fill-opacity="0.3" stroke="#38BDF8" stroke-opacity="0.3" stroke-width="1.5" />
+  <!-- Neural network nodes -->
+  <circle cx="660" cy="248" r="10" fill="#38BDF8" opacity="0.8" />
+  <circle cx="720" cy="240" r="10" fill="#7DD3FC" opacity="0.8" />
+  <circle cx="740" cy="285" r="10" fill="#38BDF8" opacity="0.8" />
+  <circle cx="700" cy="315" r="10" fill="#7DD3FC" opacity="0.8" />
+  <circle cx="655" cy="300" r="10" fill="#38BDF8" opacity="0.8" />
+  <!-- Neural connections -->
+  <line x1="660" y1="248" x2="720" y2="240" stroke="#38BDF8" stroke-width="1.5" stroke-opacity="0.5" />
+  <line x1="720" y1="240" x2="740" y2="285" stroke="#38BDF8" stroke-width="1.5" stroke-opacity="0.5" />
+  <line x1="740" y1="285" x2="700" y2="315" stroke="#38BDF8" stroke-width="1.5" stroke-opacity="0.5" />
+  <line x1="700" y1="315" x2="655" y2="300" stroke="#38BDF8" stroke-width="1.5" stroke-opacity="0.5" />
+  <line x1="655" y1="300" x2="660" y2="248" stroke="#38BDF8" stroke-width="1.5" stroke-opacity="0.5" />
+  <line x1="660" y1="248" x2="700" y2="315" stroke="#38BDF8" stroke-width="1" stroke-opacity="0.3" />
+  <line x1="720" y1="240" x2="655" y2="300" stroke="#38BDF8" stroke-width="1" stroke-opacity="0.3" />
+  <line x1="660" y1="248" x2="740" y2="285" stroke="#38BDF8" stroke-width="1" stroke-opacity="0.3" />
+
+  <!-- Pillars: Culture, Process, Tech -->
+  <rect x="880" y="200" width="110" height="160" rx="12" fill="#FFFFFF" fill-opacity="0.06" stroke="#38BDF8" stroke-opacity="0.2" stroke-width="1" />
+  <text x="935" y="268" fill="#38BDF8" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="700" text-anchor="middle">CULTURE</text>
+  <rect x="1000" y="220" width="110" height="140" rx="12" fill="#FFFFFF" fill-opacity="0.06" stroke="#38BDF8" stroke-opacity="0.2" stroke-width="1" />
+  <text x="1055" y="282" fill="#7DD3FC" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="700" text-anchor="middle">PROCESS</text>
+  <rect x="1120" y="240" width="60" height="120" rx="12" fill="#FFFFFF" fill-opacity="0.06" stroke="#38BDF8" stroke-opacity="0.2" stroke-width="1" />
+  <text x="1150" y="296" fill="#BAE6FD" font-family="Inter, Arial, sans-serif" font-size="11" font-weight="700" text-anchor="middle">TECH</text>
+
+  <!-- Title -->
+  <text x="80" y="540" fill="#FFFFFF" font-family="Inter, Arial, sans-serif" font-size="40" font-weight="700">Transformation Digitale</text>
+  <text x="80" y="585" fill="#FFFFFF" font-family="Inter, Arial, sans-serif" font-size="24" opacity="0.7">Au-delà de la technologie</text>
+</svg>

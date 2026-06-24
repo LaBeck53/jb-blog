@@ -1,6 +1,7 @@
 ---
 import { getCollection, getEntry } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleCard from '../../components/ArticleCard.astro';
 
 export async function getStaticPaths() {
   const blogEntries = await getCollection('blog');
@@ -12,6 +13,18 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content } = await entry.render();
+
+// Articles liés : priorité aux tags communs, puis les plus récents
+const allEntries = await getCollection('blog');
+const relatedArticles = allEntries
+  .filter(e => e.slug !== entry.slug && !e.data.draft)
+  .map(e => ({
+    entry: e,
+    sharedTags: e.data.tags.filter(t => entry.data.tags.includes(t)).length,
+  }))
+  .sort((a, b) => b.sharedTags - a.sharedTags || b.entry.data.pubDate.valueOf() - a.entry.data.pubDate.valueOf())
+  .slice(0, 3)
+  .map(({ entry: e }) => e);
 
 // Extraire les headings du contenu pour créer le sommaire
 const headings = [];
@@ -28,36 +41,56 @@ while ((match = headingRegex.exec(contentString)) !== null) {
 
 <BaseLayout title={`${entry.data.title} - Julien Bechkri`} description={entry.data.description}>
   <!-- Hero Header -->
-  <div class="relative bg-gradient-to-br from-blue-600 via-blue-700 to-orange-500 text-white">
-    <div class="absolute inset-0 bg-black/20"></div>
-    <div class="relative max-w-7xl mx-auto px-4 py-20">
-      <div class="max-w-4xl">
-        <div class="flex items-center gap-2 mb-4">
-          <span class="bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-medium">
-            Article
-          </span>
-          <span class="text-white/80">•</span>
-          <time class="text-white/80 text-sm">
-            {entry.data.pubDate.toLocaleDateString('fr-FR', {
-              year: 'numeric',
-              month: 'long',
-              day: 'numeric'
-            })}
-          </time>
-        </div>
-        <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">
-          {entry.data.title}
-        </h1>
-        <p class="text-xl md:text-2xl text-blue-100 mb-8 leading-relaxed">
-          {entry.data.description}
-        </p>
-        <div class="flex flex-wrap gap-2">
-          {entry.data.tags.map(tag => (
-            <span class="bg-white/10 backdrop-blur-sm border border-white/20 px-4 py-2 rounded-full text-sm font-medium">
-              {tag}
+  <div class="border-b border-slate-100 bg-white">
+    <div class="max-w-7xl mx-auto px-4 py-14 md:py-20">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+
+        <!-- Left: meta + title + description + tags -->
+        <div>
+          <div class="flex items-center gap-3 mb-5">
+            <span class="inline-flex items-center rounded-full bg-brand-50 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-brand-600 border border-brand-100">
+              {entry.data.tags?.[0] ?? 'Article'}
             </span>
-          ))}
+            <span class="text-slate-300">•</span>
+            <time class="text-sm text-slate-400">
+              {entry.data.pubDate.toLocaleDateString('fr-FR', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+              })}
+            </time>
+          </div>
+
+          <h1 class="text-4xl md:text-5xl font-bold text-slate-950 leading-tight mb-5">
+            {entry.data.title}
+          </h1>
+
+          <p class="text-lg text-slate-500 leading-relaxed mb-8">
+            {entry.data.description}
+          </p>
+
+          <div class="flex flex-wrap gap-2">
+            {entry.data.tags.map(tag => (
+              <span class="rounded-full border border-slate-200 bg-slate-50 px-4 py-1.5 text-sm font-medium text-slate-600">
+                {tag}
+              </span>
+            ))}
+          </div>
         </div>
+
+        <!-- Right: illustration -->
+        <div class="relative">
+          {entry.data.heroImage ? (
+            <img
+              src={entry.data.heroImage}
+              alt={entry.data.title}
+              class="w-full rounded-2xl shadow-lg shadow-slate-200/80"
+            />
+          ) : (
+            <div class="w-full aspect-video rounded-2xl bg-gradient-to-br from-brand-600 to-brand-700 shadow-lg" />
+          )}
+        </div>
+
       </div>
     </div>
   </div>
@@ -149,6 +182,30 @@ while ((match = headingRegex.exec(contentString)) !== null) {
       </main>
     </div>
   </div>
+  <!-- Related Articles -->
+  {relatedArticles.length > 0 && (
+    <section class="bg-slate-50 border-t border-slate-100 py-16">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="mb-10">
+          <p class="text-xs uppercase tracking-[0.28em] text-brand-600 font-semibold mb-2">À lire aussi</p>
+          <h2 class="text-2xl font-semibold text-slate-950">Ces articles peuvent également vous intéresser</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+          {relatedArticles.map(rel => (
+            <ArticleCard
+              title={rel.data.title}
+              description={rel.data.description}
+              date={rel.data.pubDate.toISOString().split('T')[0]}
+              tags={rel.data.tags}
+              category={rel.data.tags?.[0] ?? 'Article'}
+              eyecatchImage={rel.data.heroImage}
+              url={`/blog/${rel.slug}`}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
 </BaseLayout>
 
 <style>

@@ -3,6 +3,7 @@ const navItems = [
   { label: 'Accueil', href: '/' },
   { label: 'À Propos', href: '/about' },
   { label: 'Projets', href: '/projects' },
+  { label: 'Formations', href: '/formations' },
   { label: 'Blog', href: '/blog' },
 ];
 
@@ -10,10 +11,10 @@ const currentUrl = Astro.url.pathname;
 ---
 
 <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-xl border-b border-slate-200 shadow-sm shadow-slate-200/30">
-  <nav class="max-w-7xl mx-auto px-4 py-4">
+  <nav class="max-w-7xl mx-auto px-4 py-2">
     <div class="flex items-center justify-between gap-6">
       <a href="/" class="flex items-center gap-4">
-        <img src="/images/JB_PRODUCT_SYSTEMS_transparent.png" alt="JB Product Systems" class="h-24 w-auto max-h-24" />
+        <img src="/images/JB_PRODUCT_SYSTEMS_transparent.png" alt="JB Product Systems" class="h-24 w-auto" />
       </a>
 
       <ul class="hidden lg:flex items-center gap-10 text-sm font-medium tracking-[0.02em]">

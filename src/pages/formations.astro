@@ -1,0 +1,237 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const colorClasses: Record<string, { iconBg: string; iconText: string }> = {
+  brand:   { iconBg: 'bg-brand-50',   iconText: 'text-brand-600'   },
+  purple:  { iconBg: 'bg-purple-50',  iconText: 'text-purple-600'  },
+  emerald: { iconBg: 'bg-emerald-50', iconText: 'text-emerald-600' },
+  amber:   { iconBg: 'bg-amber-50',   iconText: 'text-amber-600'   },
+};
+
+const formations = [
+  {
+    icon: 'agile',
+    color: 'brand',
+    title: 'Agilité & Méthodes agiles',
+    tagline: 'Passer à une vraie posture agile',
+    description: `Scrum, Kanban, Lean — comprendre les valeurs agiles en profondeur, structurer ses cérémonies, fluidifier ses sprints et ancrer une culture d'amélioration continue durable.`,
+    topics: ['Valeurs & principes agiles', 'Scrum en pratique', 'Kanban & flux', 'Cérémonies efficaces', 'Rétrospectives qui marchent', 'Adoption & résistances'],
+    audience: 'PO, PM, Scrum Masters, équipes, managers',
+    duration: 'Demi-journée à 2 jours',
+  },
+  {
+    icon: 'prio',
+    color: 'purple',
+    title: 'Méthodes de priorisation',
+    tagline: `Arbitrer avec méthode, pas à l'instinct`,
+    description: `MoSCoW, WSJF, RICE, ICE scoring, matrice impact/effort — maîtriser les outils qui permettent de défendre ses choix avec des critères objectifs et d'aligner les parties prenantes rapidement.`,
+    topics: ['MoSCoW & ICE scoring', 'WSJF & RICE', 'Matrice valeur/effort', 'Priorisation multi-critères', 'Aligner les stakeholders', 'Arbitrage en contexte complexe'],
+    audience: 'PO, PM, Product Leaders, équipes produit',
+    duration: 'Demi-journée à 1 jour',
+  },
+  {
+    icon: 'project',
+    color: 'emerald',
+    title: 'Gestion de projet',
+    tagline: 'Livrer dans les temps, sans subir',
+    description: 'Cadrage, planification, gestion des risques, communication avec les sponsors et suivi des jalons — les fondamentaux opérationnels pour piloter un projet avec sérénité et rigueur.',
+    topics: ['Cadrage & définition du scope', 'WBS & planification', 'Gestion des risques', 'Reporting & communication', 'Suivi budgétaire', 'Clôture & capitalisation'],
+    audience: 'Chefs de projet, PM, managers, PMO',
+    duration: '1 à 3 jours',
+  },
+  {
+    icon: 'value',
+    color: 'amber',
+    title: 'Pilotage par la valeur',
+    tagline: 'Mesurer ce qui compte vraiment',
+    description: `OKR, North Star Metric, KPI actionnables, mesure d'impact réel — quitter le pilotage par l'activité pour un pilotage orienté résultats, et le faire adopter à toute l'organisation.`,
+    topics: ['OKR — définition & mise en œuvre', 'North Star Metric', 'KPI actionnables vs vanity metrics', 'Boucles de mesure', 'Revues de valeur', 'Culture data-driven'],
+    audience: 'Product Managers, dirigeants, équipes stratégiques',
+    duration: '1 à 2 jours',
+  },
+];
+---
+
+<BaseLayout
+  title="Formations Product Management & Agilité – Julien Bechkri"
+  description="Formations sur mesure en Product Management, agilité, priorisation et pilotage par la valeur. Format individuel ou groupe, adaptées à votre contexte."
+>
+
+  <!-- Hero -->
+  <section class="relative overflow-hidden bg-slate-950 px-6 py-20 md:py-28">
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(56,189,248,0.12),_transparent_40%),radial-gradient(circle_at_80%_20%,_rgba(99,102,241,0.10),_transparent_40%)]"></div>
+    <div class="relative max-w-5xl mx-auto text-center">
+      <span class="inline-flex items-center rounded-full border border-brand-500/30 bg-brand-500/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.25em] text-brand-400 mb-6">
+        Formations
+      </span>
+      <h1 class="text-4xl md:text-5xl xl:text-6xl font-bold text-white leading-tight mb-6">
+        Des formations qui changent<br/>
+        <span class="text-brand-400">vraiment la façon de travailler.</span>
+      </h1>
+      <p class="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed mb-10">
+        Formations individuelles ou collectives sur l'agilité, la priorisation, la gestion de projet et le pilotage par la valeur. Contenu adapté à votre contexte, animé avec pragmatisme.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="#formations" class="inline-flex items-center justify-center rounded-full bg-brand-600 hover:bg-brand-700 px-8 py-4 text-base font-semibold text-white shadow-lg shadow-brand-600/25 transition hover:-translate-y-0.5">
+          Voir les formations
+        </a>
+        <a href="/contact" class="inline-flex items-center justify-center rounded-full border border-white/30 bg-white/10 hover:bg-white/20 px-8 py-4 text-base font-semibold text-white transition">
+          Prendre rendez-vous
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mon approche -->
+  <section class="max-w-6xl mx-auto px-4 py-20">
+    <div class="text-center mb-14">
+      <p class="text-xs uppercase tracking-[0.28em] text-brand-600 font-semibold mb-3">Mon approche</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-slate-950">Pas de théorie sans pratique.</h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="text-center px-4">
+        <div class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-brand-50 text-brand-600 mb-5">
+          <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+        </div>
+        <h3 class="text-lg font-semibold text-slate-950 mb-2">Adapté à votre réalité</h3>
+        <p class="text-slate-500 text-sm leading-relaxed">Aucun contenu générique. Chaque formation part de vos cas concrets, vos contraintes et vos objectifs réels.</p>
+      </div>
+      <div class="text-center px-4">
+        <div class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-purple-50 text-purple-600 mb-5">
+          <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+          </svg>
+        </div>
+        <h3 class="text-lg font-semibold text-slate-950 mb-2">Opérationnel dès le lendemain</h3>
+        <p class="text-slate-500 text-sm leading-relaxed">Des outils et réflexes directement applicables. Vous repartez avec un plan d'action clair.</p>
+      </div>
+      <div class="text-center px-4">
+        <div class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-emerald-50 text-emerald-600 mb-5">
+          <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
+          </svg>
+        </div>
+        <h3 class="text-lg font-semibold text-slate-950 mb-2">Individuel ou collectif</h3>
+        <p class="text-slate-500 text-sm leading-relaxed">Coaching 1:1 pour un développement personnalisé, ou atelier groupe pour aligner toute une équipe.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Catalogue -->
+  <section id="formations" class="bg-slate-50 border-y border-slate-100 py-20">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="text-center mb-14">
+        <p class="text-xs uppercase tracking-[0.28em] text-brand-600 font-semibold mb-3">Catalogue</p>
+        <h2 class="text-3xl md:text-4xl font-bold text-slate-950">Les 4 formations disponibles</h2>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        {formations.map((f) => (
+          <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+            <div class="flex flex-col h-full">
+
+              <!-- Contenu principal -->
+              <div class="flex-1 px-8 pt-8 pb-8">
+                <div class="flex items-start gap-4 mb-6">
+                  <div class={`flex-shrink-0 flex items-center justify-center w-12 h-12 rounded-xl ${colorClasses[f.color].iconBg} ${colorClasses[f.color].iconText}`}>
+                    {f.icon === 'agile' && (
+                      <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+                      </svg>
+                    )}
+                    {f.icon === 'prio' && (
+                      <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 4h13M3 8h9m-9 4h6m4 0l4-4m0 0l4 4m-4-4v12"/>
+                      </svg>
+                    )}
+                    {f.icon === 'project' && (
+                      <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/>
+                      </svg>
+                    )}
+                    {f.icon === 'value' && (
+                      <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+                      </svg>
+                    )}
+                  </div>
+                  <div class="pt-0.5">
+                    <p class="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-1">{f.tagline}</p>
+                    <h3 class="text-xl font-bold text-slate-950">{f.title}</h3>
+                  </div>
+                </div>
+                <p class="text-slate-600 leading-relaxed mb-6">{f.description}</p>
+                <div class="flex flex-wrap gap-2">
+                  {f.topics.map(topic => (
+                    <span class="rounded-full bg-slate-100 border border-slate-200 px-3 py-1 text-xs font-medium text-slate-600">
+                      {topic}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <!-- Pied de card -->
+              <div class="px-8 pt-6 pb-8 border-t border-slate-100">
+                <div class="flex flex-col gap-1.5 mb-5 text-sm text-slate-500">
+                  <span><span class="font-semibold text-slate-700">Public :</span> {f.audience}</span>
+                  <span><span class="font-semibold text-slate-700">Durée :</span> {f.duration}</span>
+                </div>
+                <div class="flex items-center justify-between">
+                  <div class="flex gap-2">
+                    <span class="rounded-full bg-brand-50 border border-brand-200 px-3 py-1 text-xs font-semibold text-brand-700">Individuel</span>
+                    <span class="rounded-full bg-cyan-50 border border-cyan-200 px-3 py-1 text-xs font-semibold text-cyan-700">Groupe</span>
+                  </div>
+                  <a href="/contact" class="text-xs font-semibold text-brand-600 hover:text-brand-700 transition">
+                    En savoir plus →
+                  </a>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Comment ça se passe -->
+  <section class="max-w-6xl mx-auto px-4 py-20">
+    <div class="text-center mb-14">
+      <p class="text-xs uppercase tracking-[0.28em] text-brand-600 font-semibold mb-3">Processus</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-slate-950">Comment ça se passe ?</h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+      {[
+        { step: '01', title: 'On échange', desc: 'Un appel de 30 min pour comprendre votre contexte, vos besoins et vos objectifs.' },
+        { step: '02', title: 'Je construis', desc: 'Je conçois un programme adapté à votre réalité, avec des cas concrets issus de votre secteur.' },
+        { step: '03', title: 'On forme', desc: 'La formation se déroule en présentiel ou à distance, avec des exercices pratiques tout au long.' },
+        { step: '04', title: 'Vous appliquez', desc: `Vous repartez avec un plan d'action, des outils et un suivi possible pour ancrer les pratiques.` },
+      ].map(({ step, title, desc }) => (
+        <div>
+          <div class="text-5xl font-black text-slate-100 mb-3 leading-none select-none">{step}</div>
+          <h3 class="text-lg font-semibold text-slate-950 mb-2">{title}</h3>
+          <p class="text-sm text-slate-500 leading-relaxed">{desc}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- CTA final -->
+  <section class="bg-slate-950 py-20">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <p class="text-xs uppercase tracking-[0.28em] text-brand-400 font-semibold mb-4">Prêt à se lancer ?</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
+        Discutons de votre projet de formation.
+      </h2>
+      <p class="text-lg text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed">
+        Un échange de 30 minutes suffit pour cadrer vos besoins, définir le format et estimer le budget. Sans engagement.
+      </p>
+      <a href="/contact" class="inline-flex items-center justify-center rounded-full bg-brand-600 hover:bg-brand-700 px-8 py-4 text-base font-semibold text-white shadow-lg shadow-brand-600/25 transition hover:-translate-y-0.5">
+        Réserver un créneau →
+      </a>
+    </div>
+  </section>
+
+</BaseLayout>
